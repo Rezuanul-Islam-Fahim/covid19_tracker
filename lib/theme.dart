@@ -4,6 +4,9 @@ import './constant.dart';
 
 ThemeData get appTheme => ThemeData(
       scaffoldBackgroundColor: kBackgroundColor,
+      appBarTheme: ThemeData.light().appBarTheme.copyWith(
+            brightness: Brightness.dark,
+          ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline2: TextStyle(
               color: kTextColor,
