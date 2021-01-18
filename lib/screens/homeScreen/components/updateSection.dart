@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'updatePanel.dart';
 
 class UpdateSection extends StatelessWidget {
   @override
@@ -28,8 +29,8 @@ class UpdateSection extends StatelessWidget {
     ];
 
     return Container(
-      height: 260,
-      child: GridView.builder(
+      child: GridView(
+        shrinkWrap: true,
         padding: EdgeInsets.only(top: 15),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -38,55 +39,12 @@ class UpdateSection extends StatelessWidget {
           mainAxisExtent: 110,
         ),
         physics: NeverScrollableScrollPhysics(),
-        itemCount: 4,
-        itemBuilder: (BuildContext context, index) {
-          return Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Container(
-                      width: 38,
-                      height: 38,
-                      padding: EdgeInsets.all(9),
-                      decoration: BoxDecoration(
-                        color: data[index]['color'].withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/running.svg',
-                        color: data[index]['color'],
-                      ),
-                    ),
-                    SizedBox(width: 6),
-                    Expanded(
-                      child: Text(
-                        data[index]['text'],
-                        style: Theme.of(context).textTheme.headline4,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                Text(
-                  data[index]['value'].toString(),
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-                SizedBox(height: 2),
-                Text(
-                  'People',
-                ),
-              ],
-            ),
-          );
-        },
+        children: <Widget>[
+          UpdatePanel(data[0]),
+          UpdatePanel(data[1]),
+          UpdatePanel(data[2]),
+          UpdatePanel(data[3]),
+        ],
       ),
     );
   }
