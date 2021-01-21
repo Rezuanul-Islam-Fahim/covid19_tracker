@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class UpdatePanel extends StatelessWidget {
-  const UpdatePanel(this.covidData);
+import '../../../constant.dart';
 
-  final Map<String, dynamic> covidData;
+class UpdatePanel extends StatelessWidget {
+  const UpdatePanel({this.title, this.value, this.color});
+
+  final String title;
+  final int value;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +28,18 @@ class UpdatePanel extends StatelessWidget {
                 height: 38,
                 padding: EdgeInsets.all(9),
                 decoration: BoxDecoration(
-                  color: covidData['color'].withOpacity(0.2),
+                  color: color.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/running.svg',
-                  color: covidData['color'],
+                  color: color,
                 ),
               ),
               SizedBox(width: 6),
               Expanded(
                 child: Text(
-                  covidData['text'],
+                  title,
                   style: Theme.of(context).textTheme.headline4,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -43,12 +47,29 @@ class UpdatePanel extends StatelessWidget {
             ],
           ),
           SizedBox(height: 6),
-          Text(
-            covidData['value'].toString(),
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          SizedBox(height: 2),
-          Text('People'),
+          value != null
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      value.toString(),
+                      style: Theme.of(context).textTheme.headline2,
+                    ),
+                    SizedBox(height: 2),
+                    Text('People'),
+                  ],
+                )
+              : Container(
+                  width: 38,
+                  height: 38,
+                  padding: EdgeInsets.only(top: 8, left: 8),
+                  child: Theme(
+                    data: ThemeData(
+                      accentColor: kPrimaryColor,
+                    ),
+                    child: CircularProgressIndicator(strokeWidth: 4.3),
+                  ),
+                ),
         ],
       ),
     );

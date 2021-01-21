@@ -7,7 +7,7 @@ const Color kPrimaryColor = Color(0xFF0D8E53);
 const Color kBackgroundColor = Color(0xFFFCFCFC);
 const Color kInactiveChartColor = Color(0xFFEAECEF);
 
-const Color totalCase = Colors.orangeAccent;
-const Color totalDeath = Colors.red;
-const Color totalRecovered = Colors.green;
-const Color newCase = Colors.purple;
+const Color casesColor = Colors.black;
+const Color deathsColor = Colors.orangeAccent;
+const Color recoveredColor = Colors.red;
+const Color newCasesColor = Colors.purple;

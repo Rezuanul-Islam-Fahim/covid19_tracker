@@ -1,34 +1,34 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
+import '../../../models/covidInfo.dart';
+import '../../../models/covidApiHandler.dart';
 import 'updatePanel.dart';
 
-class UpdateSection extends StatelessWidget {
+class UpdateSection extends StatefulWidget {
+  @override
+  _UpdateSectionState createState() => _UpdateSectionState();
+}
+
+class _UpdateSectionState extends State<UpdateSection> {
+  CovidInfo covidData = CovidInfo();
+
+  Future<void> loadCovidData() async {
+    covidData =
+        await CovidHandler.getCovidData('https://disease.sh/v3/covid-19/all');
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadCovidData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List data = [
-      {
-        'color': Colors.orangeAccent,
-        'text': 'Total Cases',
-        'value': 10540,
-      },
-      {
-        'color': Colors.red,
-        'text': 'Total Death',
-        'value': 1054,
-      },
-      {
-        'color': Colors.green,
-        'text': 'Total Recovered',
-        'value': 5550,
-      },
-      {
-        'color': Colors.purple,
-        'text': 'New Cases',
-        'value': 234,
-      },
-    ];
-
     return DefaultTabController(
       length: 2,
       child: Column(
@@ -103,10 +103,26 @@ class UpdateSection extends StatelessWidget {
                   ),
                   physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
-                    UpdatePanel(data[0]),
-                    UpdatePanel(data[1]),
-                    UpdatePanel(data[2]),
-                    UpdatePanel(data[3]),
+                    UpdatePanel(
+                      title: 'Cases',
+                      value: covidData.cases,
+                      color: casesColor,
+                    ),
+                    UpdatePanel(
+                      title: 'Deaths',
+                      value: covidData.deaths,
+                      color: deathsColor,
+                    ),
+                    UpdatePanel(
+                      title: 'New Deaths',
+                      value: covidData.todayDeaths,
+                      color: recoveredColor,
+                    ),
+                    UpdatePanel(
+                      title: 'New Cases',
+                      value: covidData.todayCases,
+                      color: newCasesColor,
+                    ),
                   ],
                 ),
                 GridView(
@@ -119,10 +135,11 @@ class UpdateSection extends StatelessWidget {
                   ),
                   physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
-                    UpdatePanel(data[0]),
-                    UpdatePanel(data[1]),
-                    UpdatePanel(data[2]),
-                    UpdatePanel(data[3]),
+                    // UpdatePanel(data[0]),
+                    // UpdatePanel(data[1]),
+                    // UpdatePanel(data[2]),
+                    // UpdatePanel(data[3]),
+                    Text('rgegrg'),
                   ],
                 ),
               ],
