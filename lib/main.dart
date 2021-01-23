@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './theme.dart';
-import './screens/homeScreen/homeScreen.dart';
+import 'theme.dart';
+import 'screens/homeScreen/homeScreen.dart';
 
 void main() => runApp(CovidTracker());
 
