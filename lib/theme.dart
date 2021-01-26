@@ -13,6 +13,11 @@ ThemeData get appTheme => ThemeData(
               fontSize: 21,
               fontWeight: FontWeight.w700,
             ),
+            headline3: TextStyle(
+              color: kTextMediumColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
             headline4: TextStyle(
               color: kTextMediumColor,
               fontSize: 16,

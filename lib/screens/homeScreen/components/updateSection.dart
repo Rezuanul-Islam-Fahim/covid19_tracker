@@ -29,6 +29,14 @@ class _UpdateSectionState extends State<UpdateSection> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle countryButtonStyle = TextButton.styleFrom(
+      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 18),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      backgroundColor: kPrimaryColor.withOpacity(0.9),
+    );
+
     return DefaultTabController(
       length: 2,
       child: Column(
@@ -125,20 +133,27 @@ class _UpdateSectionState extends State<UpdateSection> {
                     ),
                   ],
                 ),
-                GridView(
-                  padding: EdgeInsets.only(top: 15),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    mainAxisExtent: 110,
-                  ),
-                  physics: NeverScrollableScrollPhysics(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    // UpdatePanel(data[0]),
-                    // UpdatePanel(data[1]),
-                    // UpdatePanel(data[2]),
-                    // UpdatePanel(data[3]),
+                    Text(
+                      'Set country to see your country\'s covid data',
+                      style: Theme.of(context).textTheme.headline3,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 10),
+                    TextButton.icon(
+                      icon: Icon(
+                        Icons.location_on_rounded,
+                        color: Colors.white,
+                      ),
+                      style: countryButtonStyle,
+                      label: Text(
+                        'Set Country',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ],
