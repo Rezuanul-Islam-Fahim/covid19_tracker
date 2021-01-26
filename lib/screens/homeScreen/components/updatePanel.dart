@@ -56,7 +56,10 @@ class UpdatePanel extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     SizedBox(height: 2),
-                    Text('People'),
+                    Text(
+                      'People',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
                   ],
                 )
               : Container(
@@ -67,7 +70,7 @@ class UpdatePanel extends StatelessWidget {
                     data: ThemeData(
                       accentColor: kPrimaryColor,
                     ),
-                    child: CircularProgressIndicator(strokeWidth: 4.3),
+                    child: CircularProgressIndicator(),
                   ),
                 ),
         ],

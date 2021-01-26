@@ -79,7 +79,7 @@ class _UpdateSectionState extends State<UpdateSection> {
                       ),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text('Bangladesh'),
+                        child: Text('My Country'),
                       ),
                     ),
                   ),
@@ -109,6 +109,11 @@ class _UpdateSectionState extends State<UpdateSection> {
                       color: casesColor,
                     ),
                     UpdatePanel(
+                      title: 'New Cases',
+                      value: covidData.todayCases,
+                      color: newCasesColor,
+                    ),
+                    UpdatePanel(
                       title: 'Deaths',
                       value: covidData.deaths,
                       color: deathsColor,
@@ -117,11 +122,6 @@ class _UpdateSectionState extends State<UpdateSection> {
                       title: 'New Deaths',
                       value: covidData.todayDeaths,
                       color: recoveredColor,
-                    ),
-                    UpdatePanel(
-                      title: 'New Cases',
-                      value: covidData.todayCases,
-                      color: newCasesColor,
                     ),
                   ],
                 ),
@@ -139,7 +139,6 @@ class _UpdateSectionState extends State<UpdateSection> {
                     // UpdatePanel(data[1]),
                     // UpdatePanel(data[2]),
                     // UpdatePanel(data[3]),
-                    Text('rgegrg'),
                   ],
                 ),
               ],
