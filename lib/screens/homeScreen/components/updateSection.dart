@@ -28,29 +28,33 @@ class _UpdateSectionState extends State<UpdateSection> {
   }
 
   Future<void> setCountry(String countryName) async {
-    setState(() => isLoading = true);
+    if (countryName.isNotEmpty) {
+      setState(() => isLoading = true);
 
-    List<CovidInfo> covidAllCountryData = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries',
-    );
-
-    setState(() {
-      for (CovidInfo data in covidAllCountryData) {
-        if (data.countryName.toLowerCase() == countryName.toLowerCase()) {
-          isSetCountry = true;
-          break;
-        }
-      }
-
-      if (!isSetCountry) isWrongCountry = true;
-      isLoading = false;
-    });
-
-    if (isSetCountry) {
-      covidDataCountry = await CovidHandler.getCovidData(
-        'https://disease.sh/v3/covid-19/countries/$countryName',
+      List<CovidInfo> covidAllCountryData = await CovidHandler.getCovidData(
+        'https://disease.sh/v3/covid-19/countries',
       );
-      setState(() {});
+
+      setState(() {
+        for (CovidInfo data in covidAllCountryData) {
+          if (data.countryName.toLowerCase() == countryName.toLowerCase()) {
+            isSetCountry = true;
+            break;
+          }
+        }
+
+        if (!isSetCountry) isWrongCountry = true;
+        isLoading = false;
+      });
+
+      if (isSetCountry) {
+        covidDataCountry = await CovidHandler.getCovidData(
+          'https://disease.sh/v3/covid-19/countries/$countryName',
+        );
+        setState(() {});
+      }
+    } else {
+      setState(() => isWrongCountry = true);
     }
   }
 

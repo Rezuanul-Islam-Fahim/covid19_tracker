@@ -31,20 +31,42 @@ class CountrySearchForm extends StatelessWidget {
         : Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Set country to see your country\'s covid data',
-                style: Theme.of(context).textTheme.headline3,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  errorText:
-                      isWrongCountry ? 'Enter a valid country name' : null,
+              Container(
+                height: 50,
+                child: TextFormField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 25),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.grey[350],
+                        width: 0.7,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.grey[400],
+                        width: 0.9,
+                      ),
+                    ),
+                    filled: true,
+                    fillColor: kBackgroundColor,
+                    hintText: 'Enter Country Name',
+                  ),
                 ),
               ),
-              SizedBox(height: 10),
+              if (isWrongCountry)
+                Container(
+                  padding: EdgeInsets.only(top: 5, left: 2),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Enter a valid country name',
+                    style: TextStyle(color: Colors.red, fontSize: 15),
+                  ),
+                ),
+              SizedBox(height: 15),
               TextButton.icon(
                 icon: Icon(
                   Icons.location_on_rounded,
