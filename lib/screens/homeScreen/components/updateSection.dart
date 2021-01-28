@@ -16,7 +16,9 @@ class UpdateSection extends StatefulWidget {
 class _UpdateSectionState extends State<UpdateSection> {
   CovidInfo covidDataAll = CovidInfo();
   CovidInfo covidDataCountry = CovidInfo();
-  String countryName;
+  bool isLoading = false;
+  bool isSetCountry = false;
+  bool isWrongCountry = false;
 
   Future<void> loadCovidData() async {
     covidDataAll = await CovidHandler.getCovidData(
@@ -25,12 +27,31 @@ class _UpdateSectionState extends State<UpdateSection> {
     setState(() {});
   }
 
-  Future<void> setCountry(String name) async {
-    countryName = name;
-    covidDataCountry = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries/$countryName',
+  Future<void> setCountry(String countryName) async {
+    setState(() => isLoading = true);
+
+    List<CovidInfo> covidAllCountryData = await CovidHandler.getCovidData(
+      'https://disease.sh/v3/covid-19/countries',
     );
-    setState(() {});
+
+    setState(() {
+      for (CovidInfo data in covidAllCountryData) {
+        if (data.countryName.toLowerCase() == countryName.toLowerCase()) {
+          isSetCountry = true;
+          break;
+        }
+      }
+
+      if (!isSetCountry) isWrongCountry = true;
+      isLoading = false;
+    });
+
+    if (isSetCountry) {
+      covidDataCountry = await CovidHandler.getCovidData(
+        'https://disease.sh/v3/covid-19/countries/$countryName',
+      );
+      setState(() {});
+    }
   }
 
   @override
@@ -55,9 +76,13 @@ class _UpdateSectionState extends State<UpdateSection> {
               physics: NeverScrollableScrollPhysics(),
               children: <Widget>[
                 UpdateSectionGrid(covidDataAll),
-                countryName == null
-                    ? CountrySearchForm(setCountry)
-                    : UpdateSectionGrid(covidDataCountry),
+                isSetCountry
+                    ? UpdateSectionGrid(covidDataCountry)
+                    : CountrySearchForm(
+                        setCountry,
+                        isLoading,
+                        isWrongCountry,
+                      )
               ],
             ),
           ),

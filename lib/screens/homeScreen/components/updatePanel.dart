@@ -67,9 +67,7 @@ class UpdatePanel extends StatelessWidget {
                   height: 38,
                   padding: EdgeInsets.only(top: 8, left: 8),
                   child: Theme(
-                    data: ThemeData(
-                      accentColor: kPrimaryColor,
-                    ),
+                    data: ThemeData(accentColor: kPrimaryColor),
                     child: CircularProgressIndicator(),
                   ),
                 ),
