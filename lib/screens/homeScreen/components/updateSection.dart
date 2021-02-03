@@ -37,7 +37,7 @@ class _UpdateSectionState extends State<UpdateSection> {
 
       setState(() {
         for (CovidInfo data in covidAllCountryData) {
-          if (data.countryName.toLowerCase() == countryName.toLowerCase()) {
+          if (data.countryName.toLowerCase() == countryName) {
             isSetCountry = true;
             break;
           }

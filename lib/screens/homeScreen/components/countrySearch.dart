@@ -77,7 +77,9 @@ class CountrySearchForm extends StatelessWidget {
                   'Set Country',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () => handler(searchController.text),
+                onPressed: () => handler(
+                  searchController.text.trim().toLowerCase(),
+                ),
               ),
             ],
           );
