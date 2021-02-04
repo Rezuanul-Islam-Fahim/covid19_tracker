@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(20, 15, 20, 25),
               decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.1),
+                color: kPrimaryColor.withOpacity(0.08),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
