@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../models/covidInfo.dart';
 import '../../../models/covidApiHandler.dart';
@@ -16,14 +17,28 @@ class UpdateSection extends StatefulWidget {
 class _UpdateSectionState extends State<UpdateSection> {
   CovidInfo covidDataAll = CovidInfo();
   CovidInfo covidDataCountry = CovidInfo();
+  String country;
   bool isLoading = false;
   bool isSetCountry = false;
   bool isWrongCountry = false;
 
   Future<void> loadCovidData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.containsKey('countryName')) {
+      setState(() => country = prefs.getString('countryName'));
+    }
+
     covidDataAll = await CovidHandler.getCovidData(
       'https://disease.sh/v3/covid-19/all',
     );
+
+    if (prefs.containsKey('countryName')) {
+      covidDataCountry = await CovidHandler.getCovidData(
+        'https://disease.sh/v3/covid-19/countries/${country.toLowerCase()}',
+      );
+    }
+
     setState(() {});
   }
 
@@ -51,7 +66,10 @@ class _UpdateSectionState extends State<UpdateSection> {
         covidDataCountry = await CovidHandler.getCovidData(
           'https://disease.sh/v3/covid-19/countries/$countryName',
         );
+        country = covidDataCountry.countryName;
         setState(() {});
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('countryName', country);
       }
     } else {
       setState(() => isWrongCountry = true);
@@ -72,7 +90,7 @@ class _UpdateSectionState extends State<UpdateSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 10),
-          UpdateSectionTab(covidDataCountry.countryName),
+          UpdateSectionTab(country),
           SizedBox(height: 3),
           Container(
             height: 260,
@@ -80,7 +98,7 @@ class _UpdateSectionState extends State<UpdateSection> {
               physics: NeverScrollableScrollPhysics(),
               children: <Widget>[
                 UpdateSectionGrid(covidDataAll),
-                isSetCountry
+                isSetCountry || country != null
                     ? UpdateSectionGrid(covidDataCountry)
                     : CountrySearchForm(
                         setCountry,
