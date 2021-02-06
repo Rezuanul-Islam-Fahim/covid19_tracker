@@ -1,5 +1,6 @@
-class CovidInfo {
+class CovidInfoCountry {
   final String countryName;
+  final String flag;
   final int cases;
   final int todayCases;
   final int deaths;
@@ -7,8 +8,9 @@ class CovidInfo {
   final int recovered;
   final int todayRecovered;
 
-  CovidInfo({
+  CovidInfoCountry({
     this.countryName,
+    this.flag,
     this.cases,
     this.todayCases,
     this.deaths,
@@ -17,9 +19,10 @@ class CovidInfo {
     this.todayRecovered,
   });
 
-  factory CovidInfo.fromJSON(Map<String, dynamic> covidData) {
-    return CovidInfo(
+  factory CovidInfoCountry.fromJSON(Map<String, dynamic> covidData) {
+    return CovidInfoCountry(
       countryName: covidData['country'],
+      flag: covidData['countryInfo']['flag'],
       cases: covidData['cases'],
       todayCases: covidData['todayCases'],
       deaths: covidData['deaths'],

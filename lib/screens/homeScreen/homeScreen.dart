@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constant.dart';
 import 'components/updateSection.dart';
+import 'components/top5UpdatePanel.dart';
+import 'components/mostEffectedCountries.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -46,6 +48,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               child: UpdateSection(),
+            ),
+            SizedBox(height: 10),
+            Top5UpdatePanel(
+              title: 'Most Effected Countries',
+              child: MostEffectedCountries(),
             ),
           ],
         ),

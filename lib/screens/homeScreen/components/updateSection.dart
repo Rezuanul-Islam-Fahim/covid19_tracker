@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../models/covidInfo.dart';
+import '../../../models/covidInfoAll.dart';
+import '../../../models/covidInfoCountry.dart';
 import '../../../models/covidApiHandler.dart';
 import 'updateGrid.dart';
 import 'tabBar.dart';
@@ -15,8 +16,8 @@ class UpdateSection extends StatefulWidget {
 }
 
 class _UpdateSectionState extends State<UpdateSection> {
-  CovidInfo covidDataAll = CovidInfo();
-  CovidInfo covidDataCountry = CovidInfo();
+  CovidInfoAll covidDataAll = CovidInfoAll();
+  CovidInfoCountry covidDataCountry = CovidInfoCountry();
   String country;
   bool isLoading = false;
   bool isSetCountry = false;
@@ -46,12 +47,13 @@ class _UpdateSectionState extends State<UpdateSection> {
     if (countryName.isNotEmpty) {
       setState(() => isLoading = true);
 
-      List<CovidInfo> covidAllCountryData = await CovidHandler.getCovidData(
+      List<CovidInfoCountry> covidAllCountryData =
+          await CovidHandler.getCovidData(
         'https://disease.sh/v3/covid-19/countries',
       );
 
       setState(() {
-        for (CovidInfo data in covidAllCountryData) {
+        for (CovidInfoCountry data in covidAllCountryData) {
           if (data.countryName.toLowerCase() == countryName) {
             isSetCountry = true;
             break;

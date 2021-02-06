@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/covidInfo.dart';
 import '../../../constant.dart';
 import 'updatePanel.dart';
 
 class UpdateSectionGrid extends StatelessWidget {
   const UpdateSectionGrid(this.covidData);
 
-  final CovidInfo covidData;
+  final dynamic covidData;
 
   @override
   Widget build(BuildContext context) {

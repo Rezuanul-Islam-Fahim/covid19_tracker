@@ -10,7 +10,7 @@ ThemeData get appTheme => ThemeData(
       textTheme: ThemeData.light().textTheme.copyWith(
             headline2: TextStyle(
               color: kTextColor,
-              fontSize: 21,
+              fontSize: 20,
               fontWeight: FontWeight.w700,
             ),
             headline3: TextStyle(
