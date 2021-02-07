@@ -6,6 +6,8 @@ import 'components/updateSection.dart';
 import 'components/top5UpdatePanel.dart';
 import 'components/mostEffectedCountries.dart';
 import 'components/mostDeaths.dart';
+import 'components/mostEffectionToday.dart';
+import 'components/mostDeathsToday.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -51,6 +53,16 @@ class HomeScreen extends StatelessWidget {
               child: UpdateSection(),
             ),
             SizedBox(height: 35),
+            Top5UpdatePanel(
+              title: 'Most Effection Today',
+              child: MostEffectionToday(),
+            ),
+            SizedBox(height: 25),
+            Top5UpdatePanel(
+              title: 'Most Deaths Today',
+              child: MostDeathsToday(),
+            ),
+            SizedBox(height: 25),
             Top5UpdatePanel(
               title: 'Most Effected Countries',
               child: MostEffectedCountries(),
