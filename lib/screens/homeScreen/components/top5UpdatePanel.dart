@@ -9,9 +9,9 @@ class Top5UpdatePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3,
-      shadowColor: Colors.grey[50],
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      elevation: 4,
+      shadowColor: Colors.grey[50].withOpacity(0.6),
+      margin: EdgeInsets.symmetric(horizontal: 15),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),

@@ -46,7 +46,7 @@ class UpdatePanel extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 6),
+          SizedBox(height: 8),
           value != null
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +55,7 @@ class UpdatePanel extends StatelessWidget {
                       value.toString(),
                       style: Theme.of(context).textTheme.headline2,
                     ),
-                    SizedBox(height: 2),
+                    SizedBox(height: 4),
                     Text(
                       'People',
                       style: Theme.of(context).textTheme.headline5,

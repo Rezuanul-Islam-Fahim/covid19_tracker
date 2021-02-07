@@ -5,6 +5,7 @@ import '../../constant.dart';
 import 'components/updateSection.dart';
 import 'components/top5UpdatePanel.dart';
 import 'components/mostEffectedCountries.dart';
+import 'components/mostDeaths.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -49,11 +50,17 @@ class HomeScreen extends StatelessWidget {
               ),
               child: UpdateSection(),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 35),
             Top5UpdatePanel(
               title: 'Most Effected Countries',
               child: MostEffectedCountries(),
             ),
+            SizedBox(height: 25),
+            Top5UpdatePanel(
+              title: 'Most Deaths',
+              child: MostDeaths(),
+            ),
+            SizedBox(height: 25),
           ],
         ),
       ),

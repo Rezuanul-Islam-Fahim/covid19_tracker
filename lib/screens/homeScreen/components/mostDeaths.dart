@@ -7,18 +7,18 @@ import '../../../models/covidApiHandler.dart';
 import 'countryUpdatePanel.dart';
 import 'countryPanelLoader.dart';
 
-class MostEffectedCountries extends StatefulWidget {
+class MostDeaths extends StatefulWidget {
   @override
-  _MostEffectedCountriesState createState() => _MostEffectedCountriesState();
+  _MostDeathsState createState() => _MostDeathsState();
 }
 
-class _MostEffectedCountriesState extends State<MostEffectedCountries> {
+class _MostDeathsState extends State<MostDeaths> {
   List<CovidInfoCountry> covidData;
   bool isLoading = true;
 
   Future<void> loadCovidData() async {
     covidData = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries?sort=cases',
+      'https://disease.sh/v3/covid-19/countries?sort=deaths',
       fetchLength: 5,
     );
     isLoading = false;
@@ -41,8 +41,8 @@ class _MostEffectedCountriesState extends State<MostEffectedCountries> {
               (int index) {
                 return CountryUpdatePanel(
                   covidData[index],
-                  'Cases',
-                  covidData[index].cases,
+                  'Deaths',
+                  covidData[index].deaths,
                 );
               },
             ),
