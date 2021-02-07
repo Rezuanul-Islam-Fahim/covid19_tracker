@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../constant.dart';
-
 class UpdatePanel extends StatelessWidget {
   const UpdatePanel({this.title, this.value, this.color});
 
@@ -66,10 +64,7 @@ class UpdatePanel extends StatelessWidget {
                   width: 38,
                   height: 38,
                   padding: EdgeInsets.only(top: 8, left: 8),
-                  child: Theme(
-                    data: ThemeData(accentColor: kPrimaryColor),
-                    child: CircularProgressIndicator(),
-                  ),
+                  child: CircularProgressIndicator(),
                 ),
         ],
       ),

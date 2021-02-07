@@ -24,10 +24,7 @@ class CountrySearchForm extends StatelessWidget {
     return isLoading
         ? Align(
             alignment: Alignment.center,
-            child: Theme(
-              data: ThemeData(accentColor: kPrimaryColor),
-              child: CircularProgressIndicator(),
-            ),
+            child: CircularProgressIndicator(),
           )
         : Stack(
             children: <Widget>[

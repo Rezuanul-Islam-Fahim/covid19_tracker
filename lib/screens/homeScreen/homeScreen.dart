@@ -8,6 +8,7 @@ import 'components/mostEffectedCountries.dart';
 import 'components/mostDeaths.dart';
 import 'components/mostEffectionToday.dart';
 import 'components/mostDeathsToday.dart';
+import '../allCountryScreen/allCountryScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -52,7 +53,31 @@ class HomeScreen extends StatelessWidget {
               ),
               child: UpdateSection(),
             ),
-            SizedBox(height: 35),
+            SizedBox(height: 15),
+            TextButton(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    'All Country Data',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_right_alt_rounded,
+                    color: kPrimaryColor,
+                    size: 28,
+                  ),
+                ],
+              ),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => AllCountryScreen()),
+              ),
+            ),
+            SizedBox(height: 15),
             Top5UpdatePanel(
               title: 'Most Effection Today',
               child: MostEffectionToday(),
