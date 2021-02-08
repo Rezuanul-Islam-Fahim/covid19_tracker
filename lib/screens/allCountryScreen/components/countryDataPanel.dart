@@ -44,7 +44,7 @@ class CountryDataPanel extends StatelessWidget {
                   'Cases: ${covidData.cases} (+${covidData.todayCases})',
                   style: TextStyle(
                     color: Colors.blueAccent,
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -53,7 +53,7 @@ class CountryDataPanel extends StatelessWidget {
                   'Deaths: ${covidData.deaths} (+${covidData.todayDeaths})',
                   style: TextStyle(
                     color: Colors.red,
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

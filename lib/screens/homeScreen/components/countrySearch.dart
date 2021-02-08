@@ -22,9 +22,18 @@ class CountrySearchForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Align(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(),
+        ? Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircularProgressIndicator(),
+                SizedBox(width: 10),
+                Text(
+                  'Loading...',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ],
+            ),
           )
         : Stack(
             children: <Widget>[

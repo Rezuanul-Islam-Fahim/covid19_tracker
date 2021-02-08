@@ -18,7 +18,7 @@ class CountryBuilder extends StatelessWidget {
             children: <Widget>[
               CountryDataPanel(covidData[index]),
               Divider(
-                color: Colors.black45,
+                color: Colors.black26,
                 height: 0,
               ),
             ],

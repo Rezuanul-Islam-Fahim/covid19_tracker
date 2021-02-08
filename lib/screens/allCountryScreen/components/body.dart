@@ -32,7 +32,19 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? Center(child: CircularProgressIndicator())
+        ? Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircularProgressIndicator(),
+                SizedBox(width: 10),
+                Text(
+                  'Loading...',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ],
+            ),
+          )
         : CountryBuilder(covidData);
   }
 }
