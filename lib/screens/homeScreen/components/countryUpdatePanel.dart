@@ -23,7 +23,7 @@ class CountryUpdatePanel extends StatelessWidget {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 55,
+                  width: 50,
                   height: 35,
                   child: Image.network(covidData.flag),
                 ),
