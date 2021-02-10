@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/covidInfoCountry.dart';
+import '../../../screens/countryScreen/countryScreen.dart';
 
 class CountryUpdatePanel extends StatelessWidget {
   const CountryUpdatePanel(this.covidData, this.title, this.value);
@@ -12,7 +13,12 @@ class CountryUpdatePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CountryScreen(covidData.countryName),
+        ),
+      ),
       splashColor: Colors.grey[200],
       child: Container(
         width: double.infinity,
