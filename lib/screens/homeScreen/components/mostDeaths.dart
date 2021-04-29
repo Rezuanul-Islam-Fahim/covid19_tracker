@@ -18,7 +18,7 @@ class _MostDeathsState extends State<MostDeaths> {
 
   Future<void> loadCovidData() async {
     covidData = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries?sort=deaths',
+      Uri.parse('https://disease.sh/v3/covid-19/countries?sort=deaths'),
       fetchLength: 5,
     );
     isLoading = false;

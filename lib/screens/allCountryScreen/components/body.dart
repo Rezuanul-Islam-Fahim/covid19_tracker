@@ -17,7 +17,7 @@ class _BodyState extends State<Body> {
 
   Future<void> loadCovidData() async {
     covidData = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries',
+      Uri.parse('https://disease.sh/v3/covid-19/countries'),
     );
     isLoading = false;
     setState(() {});

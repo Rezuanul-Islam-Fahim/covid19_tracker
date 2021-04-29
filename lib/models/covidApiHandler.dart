@@ -7,7 +7,7 @@ import 'covidInfoAll.dart';
 import 'covidInfoCountry.dart';
 
 class CovidHandler {
-  static Future<dynamic> getCovidData(String apiUrl, {int fetchLength}) async {
+  static Future<dynamic> getCovidData(Uri apiUrl, {int fetchLength}) async {
     http.Response response = await http.get(apiUrl);
 
     return parsedJSON(response.body, fetchLength);

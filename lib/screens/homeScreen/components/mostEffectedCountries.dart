@@ -18,7 +18,7 @@ class _MostEffectedCountriesState extends State<MostEffectedCountries> {
 
   Future<void> loadCovidData() async {
     covidData = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/countries?sort=cases',
+      Uri.parse('https://disease.sh/v3/covid-19/countries?sort=cases'),
       fetchLength: 5,
     );
     isLoading = false;

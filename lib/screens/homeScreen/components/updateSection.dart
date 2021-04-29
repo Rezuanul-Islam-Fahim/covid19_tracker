@@ -31,12 +31,14 @@ class _UpdateSectionState extends State<UpdateSection> {
     }
 
     covidDataAll = await CovidHandler.getCovidData(
-      'https://disease.sh/v3/covid-19/all',
+      Uri.parse('https://disease.sh/v3/covid-19/all'),
     );
 
     if (prefs.containsKey('countryName')) {
       covidDataCountry = await CovidHandler.getCovidData(
-        'https://disease.sh/v3/covid-19/countries/${country.toLowerCase()}',
+        Uri.parse(
+          'https://disease.sh/v3/covid-19/countries/${country.toLowerCase()}',
+        ),
       );
     }
 
@@ -49,7 +51,7 @@ class _UpdateSectionState extends State<UpdateSection> {
 
       List<CovidInfoCountry> covidAllCountryData =
           await CovidHandler.getCovidData(
-        'https://disease.sh/v3/covid-19/countries',
+        Uri.parse('https://disease.sh/v3/covid-19/countries'),
       );
 
       setState(() {
@@ -66,7 +68,7 @@ class _UpdateSectionState extends State<UpdateSection> {
 
       if (isSetCountry) {
         covidDataCountry = await CovidHandler.getCovidData(
-          'https://disease.sh/v3/covid-19/countries/$countryName',
+          Uri.parse('https://disease.sh/v3/covid-19/countries/$countryName'),
         );
         country = covidDataCountry.countryName;
         setState(() {});
