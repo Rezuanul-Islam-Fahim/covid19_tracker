@@ -64,11 +64,6 @@ class _BodyState extends State<Body> {
                       child: Image.network(covidData.flag),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    covidData.countryName,
-                    style: Theme.of(context).textTheme.headline2,
-                  ),
                   SizedBox(height: 25),
                   CovidDataPanel(covidData),
                   SizedBox(height: 20),

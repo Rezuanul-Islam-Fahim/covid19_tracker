@@ -16,6 +16,8 @@ class CountryScreen extends StatelessWidget {
           splashRadius: 22,
           onPressed: () => Navigator.pop(context),
         ),
+        centerTitle: true,
+        title: Text(countryName),
       ),
       body: Body(countryName),
     );
