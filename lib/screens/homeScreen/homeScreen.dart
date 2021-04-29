@@ -10,7 +10,12 @@ import 'components/mostEffectionToday.dart';
 import 'components/mostDeathsToday.dart';
 import '../allCountryScreen/allCountryScreen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,65 +44,70 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.fromLTRB(20, 15, 20, 25),
-              decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.08),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                ),
-              ),
-              child: UpdateSection(),
-            ),
-            SizedBox(height: 15),
-            TextButton(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(
-                    'All Country Data',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: kPrimaryColor,
+      body: RefreshIndicator(
+        onRefresh: () {},
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildListDelegate([
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 15, 20, 25),
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor.withOpacity(0.08),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
                     ),
                   ),
-                  Icon(
-                    Icons.arrow_right_alt_rounded,
-                    color: kPrimaryColor,
-                    size: 28,
+                  child: UpdateSection(),
+                ),
+                SizedBox(height: 15),
+                TextButton(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        'All Country Data',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_right_alt_rounded,
+                        color: kPrimaryColor,
+                        size: 28,
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => AllCountryScreen()),
-              ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => AllCountryScreen()),
+                  ),
+                ),
+                SizedBox(height: 15),
+                Top5UpdatePanel(
+                  title: 'Most Effection Today',
+                  child: MostEffectionToday(),
+                ),
+                SizedBox(height: 25),
+                Top5UpdatePanel(
+                  title: 'Most Deaths Today',
+                  child: MostDeathsToday(),
+                ),
+                SizedBox(height: 25),
+                Top5UpdatePanel(
+                  title: 'Most Effected Countries',
+                  child: MostEffectedCountries(),
+                ),
+                SizedBox(height: 25),
+                Top5UpdatePanel(
+                  title: 'Most Deaths',
+                  child: MostDeaths(),
+                ),
+                SizedBox(height: 25),
+              ]),
             ),
-            SizedBox(height: 15),
-            Top5UpdatePanel(
-              title: 'Most Effection Today',
-              child: MostEffectionToday(),
-            ),
-            SizedBox(height: 25),
-            Top5UpdatePanel(
-              title: 'Most Deaths Today',
-              child: MostDeathsToday(),
-            ),
-            SizedBox(height: 25),
-            Top5UpdatePanel(
-              title: 'Most Effected Countries',
-              child: MostEffectedCountries(),
-            ),
-            SizedBox(height: 25),
-            Top5UpdatePanel(
-              title: 'Most Deaths',
-              child: MostDeaths(),
-            ),
-            SizedBox(height: 25),
           ],
         ),
       ),
