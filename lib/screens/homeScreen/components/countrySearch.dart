@@ -9,8 +9,8 @@ class CountrySearchForm extends StatelessWidget {
   final Function handler;
   final bool isLoading;
   final bool isWrongCountry;
-  final TextEditingController searchController = TextEditingController();
 
+  final TextEditingController searchController = TextEditingController();
   final ButtonStyle countryButtonStyle = TextButton.styleFrom(
     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 13),
     shape: RoundedRectangleBorder(
@@ -47,32 +47,7 @@ class CountrySearchForm extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    height: 50,
-                    child: TextFormField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 25),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Colors.grey[400],
-                            width: 0.6,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Colors.grey[500],
-                            width: 0.6,
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: kBackgroundColor.withOpacity(0.6),
-                        hintText: 'Enter Country Name',
-                      ),
-                    ),
-                  ),
+                  countryInputField(),
                   if (isWrongCountry)
                     Container(
                       padding: EdgeInsets.only(top: 5, left: 2),
@@ -101,5 +76,34 @@ class CountrySearchForm extends StatelessWidget {
               ),
             ],
           );
+  }
+
+  Widget countryInputField() {
+    return Container(
+      height: 50,
+      child: TextFormField(
+        controller: searchController,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 25),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Colors.grey[400],
+              width: 0.6,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Colors.grey[500],
+              width: 0.6,
+            ),
+          ),
+          filled: true,
+          fillColor: kBackgroundColor.withOpacity(0.6),
+          hintText: 'Enter Country Name',
+        ),
+      ),
+    );
   }
 }

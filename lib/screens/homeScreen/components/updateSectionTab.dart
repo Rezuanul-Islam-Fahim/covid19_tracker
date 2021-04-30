@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constant.dart';
 
 class UpdateSectionTab extends StatelessWidget {
-  UpdateSectionTab(this.countryName);
+  const UpdateSectionTab(this.countryName);
 
   final String countryName;
 
