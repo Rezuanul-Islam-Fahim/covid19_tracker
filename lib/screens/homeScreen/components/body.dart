@@ -48,19 +48,36 @@ class _BodyState extends State<Body> {
     }
 
     setState(() {});
+  }
 
+  Future<void> loadPanelData1() async {
     mostEffectionToday = await CovidHandler.getCovidData(
       Uri.parse('https://disease.sh/v3/covid-19/countries?sort=todayCases'),
       fetchLength: 5,
     );
+
+    setState(() {});
+  }
+
+  Future<void> loadPanelData2() async {
     mostDeathsToday = await CovidHandler.getCovidData(
       Uri.parse('https://disease.sh/v3/covid-19/countries?sort=todayDeaths'),
       fetchLength: 5,
     );
+
+    setState(() {});
+  }
+
+  Future<void> loadPanelData3() async {
     mostEffectedCountries = await CovidHandler.getCovidData(
       Uri.parse('https://disease.sh/v3/covid-19/countries?sort=cases'),
       fetchLength: 5,
     );
+
+    setState(() {});
+  }
+
+  Future<void> loadPanelData4() async {
     mostDeaths = await CovidHandler.getCovidData(
       Uri.parse('https://disease.sh/v3/covid-19/countries?sort=deaths'),
       fetchLength: 5,
@@ -80,6 +97,10 @@ class _BodyState extends State<Body> {
     });
 
     loadCovidData();
+    loadPanelData1();
+    loadPanelData2();
+    loadPanelData3();
+    loadPanelData4();
   }
 
   Future<void> setCountry(String countryName) async {
@@ -121,6 +142,10 @@ class _BodyState extends State<Body> {
   void initState() {
     super.initState();
     loadCovidData();
+    loadPanelData1();
+    loadPanelData2();
+    loadPanelData3();
+    loadPanelData4();
   }
 
   @override
