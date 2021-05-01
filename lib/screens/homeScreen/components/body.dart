@@ -69,6 +69,19 @@ class _BodyState extends State<Body> {
     setState(() {});
   }
 
+  Future<void> pullToRefresh() async {
+    setState(() {
+      covidDataAll = CovidInfoAll();
+      covidDataCountry = CovidInfoCountry();
+      mostEffectionToday = [];
+      mostDeathsToday = [];
+      mostEffectedCountries = [];
+      mostDeaths = [];
+    });
+
+    loadCovidData();
+  }
+
   Future<void> setCountry(String countryName) async {
     if (countryName.isNotEmpty) {
       setState(() => isLoading = true);
@@ -113,7 +126,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () {},
+      onRefresh: pullToRefresh,
       child: CustomScrollView(
         slivers: <Widget>[
           SliverList(
