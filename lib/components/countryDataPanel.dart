@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/covidInfoCountry.dart';
-import '../../../screens/countryScreen/countryScreen.dart';
+import '../constant.dart';
+import '../models/covidInfoCountry.dart';
+import '../screens/countryScreen.dart';
 
 class CountryDataPanel extends StatelessWidget {
   const CountryDataPanel(this.covidData);
@@ -36,7 +37,11 @@ class CountryDataPanel extends StatelessWidget {
                   Expanded(
                     child: Text(
                       covidData.countryName,
-                      style: Theme.of(context).textTheme.headline4,
+                      style: TextStyle(
+                        color: kTextMediumColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -49,7 +54,7 @@ class CountryDataPanel extends StatelessWidget {
                 Text(
                   'Cases: ${covidData.cases} (+${covidData.todayCases})',
                   style: TextStyle(
-                    color: Colors.blueAccent,
+                    color: Colors.blueAccent[700],
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -58,7 +63,7 @@ class CountryDataPanel extends StatelessWidget {
                 Text(
                   'Deaths: ${covidData.deaths} (+${covidData.todayDeaths})',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.red[700],
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),

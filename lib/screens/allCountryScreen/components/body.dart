@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/covidInfoCountry.dart';
 import '../../../models/covidApiHandler.dart';
-import 'countryDataBuilder.dart';
+import '../../../components/countryDataBuilder.dart';
 
 class Body extends StatefulWidget {
   @override

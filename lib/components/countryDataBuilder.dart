@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/covidInfoCountry.dart';
+import '../models/covidInfoCountry.dart';
 import 'countryDataPanel.dart';
 
 class CountryBuilder extends StatelessWidget {

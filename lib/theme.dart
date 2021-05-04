@@ -30,5 +30,9 @@ ThemeData get appTheme => ThemeData(
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
+            headline6: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
     );
