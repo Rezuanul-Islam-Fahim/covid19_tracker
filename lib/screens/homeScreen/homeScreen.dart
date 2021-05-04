@@ -9,7 +9,7 @@ import '../../components/search.dart';
 import '../../models/covidApiHandler.dart';
 import '../../models/covidInfoAll.dart';
 import '../../models/covidInfoCountry.dart';
-import '../../screens/allCountryScreen/allCountryScreen.dart';
+import '../allCountryScreen.dart';
 import 'components/top5UpdatePanel.dart';
 import 'components/updateSection.dart';
 
