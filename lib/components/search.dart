@@ -25,6 +25,13 @@ class Search extends SearchDelegate {
     }, orElse: () => null);
   }
 
+  Widget noResultText(BuildContext context) => Center(
+        child: Text(
+          'No Results Found',
+          style: Theme.of(context).textTheme.headline3,
+        ),
+      );
+
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -77,11 +84,15 @@ class Search extends SearchDelegate {
       return CovidDataPanel(resultCountry, true);
     }
 
-    return CountryBuilder(suggestionList);
+    return suggestionList.isNotEmpty
+        ? CountryBuilder(suggestionList)
+        : noResultText(context);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return CountryBuilder(suggestionList);
+    return suggestionList.isNotEmpty
+        ? CountryBuilder(suggestionList)
+        : noResultText(context);
   }
 }
