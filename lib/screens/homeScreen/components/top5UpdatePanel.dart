@@ -89,7 +89,6 @@ class Top5UpdatePanel extends StatelessWidget {
           values: data['values'],
         );
       }).toList(),
-      // children: <Widget>[
     );
   }
 }

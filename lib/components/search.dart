@@ -72,7 +72,7 @@ class Search extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back, size: 30),
+      icon: Icon(Icons.arrow_back_rounded, size: 28),
       splashRadius: 22,
       onPressed: () => Navigator.of(context).pop(),
     );

@@ -15,7 +15,7 @@ class AllCountryScreen extends StatefulWidget {
 }
 
 class _AllCountryScreenState extends State<AllCountryScreen> {
-  List<CovidInfoCountry> covidData;
+  List<CovidInfoCountry> covidData = [];
   bool isLoading = true;
 
   Future<void> loadCovidData() async {
@@ -24,6 +24,15 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
     );
     isLoading = false;
     setState(() {});
+  }
+
+  Future<void> pullToRefresh() async {
+    setState(() {
+      isLoading = true;
+      covidData = [];
+    });
+
+    loadCovidData();
   }
 
   @override
@@ -59,7 +68,12 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
           ),
         ],
       ),
-      body: isLoading ? loader(context) : CountryBuilder(covidData),
+      body: isLoading
+          ? loader(context)
+          : RefreshIndicator(
+              onRefresh: pullToRefresh,
+              child: CountryBuilder(covidData),
+            ),
     );
   }
 }
