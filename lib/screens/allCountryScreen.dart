@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../models/covidApiHandler.dart';
 import '../models/covidInfoCountry.dart';
+import '../components/bodyLoader.dart';
 import '../components/countryDataBuilder.dart';
 import '../components/search.dart';
 
@@ -58,21 +59,7 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
           ),
         ],
       ),
-      body: isLoading
-          ? Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircularProgressIndicator(),
-                  SizedBox(width: 10),
-                  Text(
-                    'Loading...',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                ],
-              ),
-            )
-          : CountryBuilder(covidData),
+      body: isLoading ? loader(context) : CountryBuilder(covidData),
     );
   }
 }

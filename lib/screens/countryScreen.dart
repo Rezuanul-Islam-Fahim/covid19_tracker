@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../models/covidApiHandler.dart';
 import '../models/covidInfoCountry.dart';
+import '../components/bodyLoader.dart';
 import '../components/covidDataPanel.dart';
 
 class CountryScreen extends StatefulWidget {
@@ -27,6 +30,15 @@ class _CountryScreenState extends State<CountryScreen> {
     setState(() {});
   }
 
+  Future<void> pullToRefresh() async {
+    setState(() {
+      isLoading = true;
+      covidData = CovidInfoCountry();
+    });
+
+    loadCovidData();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -46,20 +58,19 @@ class _CountryScreenState extends State<CountryScreen> {
         title: Text(widget.countryName),
       ),
       body: isLoading
-          ? Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircularProgressIndicator(),
-                  SizedBox(width: 10),
-                  Text(
-                    'Loading...',
-                    style: Theme.of(context).textTheme.headline3,
+          ? loader(context)
+          : RefreshIndicator(
+              onRefresh: pullToRefresh,
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      CovidDataPanel(covidData),
+                    ]),
                   ),
                 ],
               ),
-            )
-          : CovidDataPanel(covidData),
+            ),
     );
   }
 }

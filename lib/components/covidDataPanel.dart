@@ -70,53 +70,51 @@ class CovidDataPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 10),
-            Center(
-              child: SizedBox(
-                width: 120,
-                child: Image.network(covidData.flag),
+    return Padding(
+      padding: EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(height: 10),
+          Center(
+            child: SizedBox(
+              width: 120,
+              child: Image.network(covidData.flag),
+            ),
+          ),
+          isTitle
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                  child: Text(
+                    covidData.countryName,
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                )
+              : SizedBox(height: 25),
+          Card(
+            elevation: 4,
+            shadowColor: Colors.grey[50],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(15),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Covid-19 Details',
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                  SizedBox(height: 30),
+                  buildCovidDataPanel(context),
+                  SizedBox(height: 10),
+                ],
               ),
             ),
-            isTitle
-                ? Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 20),
-                    child: Text(
-                      covidData.countryName,
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  )
-                : SizedBox(height: 25),
-            Card(
-              elevation: 4,
-              shadowColor: Colors.grey[50],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      'Covid-19 Details',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    SizedBox(height: 30),
-                    buildCovidDataPanel(context),
-                    SizedBox(height: 10),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-          ],
-        ),
+          ),
+          SizedBox(height: 20),
+        ],
       ),
     );
   }

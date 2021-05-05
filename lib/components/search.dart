@@ -81,7 +81,9 @@ class Search extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     if (resultCountry != null) {
-      return CovidDataPanel(resultCountry, true);
+      return SingleChildScrollView(
+        child: CovidDataPanel(resultCountry, true),
+      );
     }
 
     return suggestionList.isNotEmpty
