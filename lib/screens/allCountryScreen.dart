@@ -8,8 +8,11 @@ import '../models/covidInfoCountry.dart';
 import '../components/bodyLoader.dart';
 import '../components/countryDataBuilder.dart';
 import '../components/search.dart';
+import '../components/drawer.dart';
 
 class AllCountryScreen extends StatefulWidget {
+  static String routeName = '/all-country-screen';
+
   @override
   _AllCountryScreenState createState() => _AllCountryScreenState();
 }
@@ -45,13 +48,20 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Text('All Country Data'),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_rounded, size: 28),
-          splashRadius: 22,
-          onPressed: () => Navigator.pop(context),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: SvgPicture.asset(
+                'assets/icons/menu.svg',
+                width: 23,
+                color: Colors.white,
+              ),
+              splashRadius: 22,
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          },
         ),
         actions: <Widget>[
           IconButton(
@@ -68,6 +78,7 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
           ),
         ],
       ),
+      drawer: MainDrawer(pageIndex: 1),
       body: isLoading
           ? loader(context)
           : RefreshIndicator(

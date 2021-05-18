@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constant.dart';
 import '../../components/search.dart';
+import '../../components/drawer.dart';
 import '../../models/covidApiHandler.dart';
 import '../../models/covidInfoAll.dart';
 import '../../models/covidInfoCountry.dart';
@@ -14,6 +15,8 @@ import 'components/top5UpdatePanel.dart';
 import 'components/updateSection.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const String routeName = '/';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -171,15 +174,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Covid19 Tracker'),
         centerTitle: true,
-        backgroundColor: kPrimaryColor,
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            'assets/icons/menu.svg',
-            width: 23,
-            color: Colors.white,
-          ),
-          splashRadius: 22,
-          onPressed: () {},
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: SvgPicture.asset(
+                'assets/icons/menu.svg',
+                width: 23,
+                color: Colors.white,
+              ),
+              splashRadius: 22,
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          },
         ),
         actions: <Widget>[
           IconButton(
@@ -196,6 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      drawer: MainDrawer(pageIndex: 0),
       body: RefreshIndicator(
         onRefresh: pullToRefresh,
         child: CustomScrollView(
@@ -242,11 +249,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    onPressed: () => Navigator.push(
+                    onPressed: () => Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => AllCountryScreen(),
-                      ),
+                      AllCountryScreen.routeName,
                     ),
                   ),
                 ),

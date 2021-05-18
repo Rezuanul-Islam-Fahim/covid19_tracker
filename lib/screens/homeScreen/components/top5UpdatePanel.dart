@@ -160,11 +160,10 @@ class CountryPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(
+      onTap: () => Navigator.pushNamed(
         context,
-        MaterialPageRoute(
-          builder: (_) => CountryScreen(covidData.countryName),
-        ),
+        CountryScreen.routeName,
+        arguments: covidData.countryName,
       ),
       splashColor: Colors.grey[200],
       child: Container(

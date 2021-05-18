@@ -11,6 +11,7 @@ class CountryScreen extends StatefulWidget {
   const CountryScreen(this.countryName);
 
   final String countryName;
+  static const String routeName = '/country-screen';
 
   @override
   _CountryScreenState createState() => _CountryScreenState();
