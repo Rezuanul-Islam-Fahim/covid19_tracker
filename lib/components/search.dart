@@ -40,7 +40,7 @@ class Search extends SearchDelegate {
     return theme.copyWith(
       appBarTheme: AppBarTheme(
         backgroundColor: theme.primaryColor,
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(color: Colors.white),
