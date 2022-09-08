@@ -204,6 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: MainDrawer(pageIndex: 0),
       body: RefreshIndicator(
+        color: kPrimaryColor,
         onRefresh: pullToRefresh,
         child: CustomScrollView(
           slivers: <Widget>[

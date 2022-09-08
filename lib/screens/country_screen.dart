@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../constant.dart';
 import '../models/covid_api_handler.dart';
 import '../models/covid_info_country.dart';
 import '../components/body_loader.dart';
@@ -61,6 +62,7 @@ class _CountryScreenState extends State<CountryScreen> {
       body: isLoading
           ? loader(context)
           : RefreshIndicator(
+              color: kPrimaryColor,
               onRefresh: pullToRefresh,
               child: CustomScrollView(
                 slivers: <Widget>[
