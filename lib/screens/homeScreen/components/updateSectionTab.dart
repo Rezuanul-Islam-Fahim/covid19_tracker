@@ -5,7 +5,7 @@ import '../../../constant.dart';
 class UpdateSectionTab extends StatelessWidget {
   const UpdateSectionTab(this.countryName);
 
-  final String countryName;
+  final String? countryName;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class UpdateSectionTab extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    countryName == null ? 'My Country' : countryName,
+                    countryName == null ? 'My Country' : countryName!,
                   ),
                 ),
               ),

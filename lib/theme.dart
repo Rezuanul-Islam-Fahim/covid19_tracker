@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'constant.dart';
 
 ThemeData get appTheme => ThemeData(
       scaffoldBackgroundColor: kBackgroundColor,
       primaryColor: kPrimaryColor,
-      accentColor: kPrimaryColor.withOpacity(0.8),
       appBarTheme: ThemeData.light().appBarTheme.copyWith(
-            brightness: Brightness.dark,
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline2: TextStyle(
@@ -35,4 +35,7 @@ ThemeData get appTheme => ThemeData(
               fontSize: 16,
             ),
           ),
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        secondary: kPrimaryColor.withOpacity(0.8),
+      ),
     );

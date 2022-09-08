@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models/covidInfoCountry.dart';
 import 'countryDataBuilder.dart';
@@ -13,16 +14,16 @@ class Search extends SearchDelegate {
     return query.isEmpty
         ? covidData
         : covidData.where((CovidInfoCountry element) {
-            return element.countryName
+            return element.countryName!
                 .toLowerCase()
                 .startsWith(query.trim().toLowerCase());
           }).toList();
   }
 
-  CovidInfoCountry get resultCountry {
+  CovidInfoCountry? get resultCountry {
     return covidData.singleWhere((CovidInfoCountry element) {
-      return element.countryName.toLowerCase() == query.trim().toLowerCase();
-    }, orElse: () => null);
+      return element.countryName!.toLowerCase() == query.trim().toLowerCase();
+    }, orElse: () => CovidInfoCountry());
   }
 
   Widget noResultText(BuildContext context) => Center(
@@ -38,8 +39,8 @@ class Search extends SearchDelegate {
 
     return theme.copyWith(
       appBarTheme: AppBarTheme(
-        brightness: Brightness.dark,
         backgroundColor: theme.primaryColor,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(color: Colors.white),
@@ -80,9 +81,9 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    if (resultCountry != null) {
+    if (resultCountry!.countryName != null) {
       return SingleChildScrollView(
-        child: CovidDataPanel(resultCountry, true),
+        child: CovidDataPanel(resultCountry!, true),
       );
     }
 

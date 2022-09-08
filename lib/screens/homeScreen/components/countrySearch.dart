@@ -88,14 +88,14 @@ class CountrySearchForm extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.grey[400],
+              color: Colors.grey[400]!,
               width: 0.6,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.grey[500],
+              color: Colors.grey[500]!,
               width: 0.6,
             ),
           ),

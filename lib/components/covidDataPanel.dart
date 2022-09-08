@@ -79,14 +79,14 @@ class CovidDataPanel extends StatelessWidget {
           Center(
             child: SizedBox(
               width: 120,
-              child: Image.network(covidData.flag),
+              child: Image.network(covidData.flag!),
             ),
           ),
           isTitle
               ? Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Text(
-                    covidData.countryName,
+                    covidData.countryName!,
                     style: Theme.of(context).textTheme.headline2,
                   ),
                 )

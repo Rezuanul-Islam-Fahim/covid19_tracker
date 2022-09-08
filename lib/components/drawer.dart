@@ -8,7 +8,7 @@ import '../screens/homeScreen/homeScreen.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({this.pageIndex});
 
-  final int pageIndex;
+  final int? pageIndex;
 
   List<Map<String, dynamic>> get menuList {
     return [

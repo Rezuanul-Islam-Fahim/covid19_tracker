@@ -1,10 +1,10 @@
 class CovidInfoAll {
-  final int cases;
-  final int todayCases;
-  final int deaths;
-  final int todayDeaths;
-  final int recovered;
-  final int todayRecovered;
+  final int? cases;
+  final int? todayCases;
+  final int? deaths;
+  final int? todayDeaths;
+  final int? recovered;
+  final int? todayRecovered;
 
   CovidInfoAll({
     this.cases,

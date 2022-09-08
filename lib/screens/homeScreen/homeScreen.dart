@@ -22,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String countryName;
+  String? countryName;
   CovidInfoAll covidDataAll = CovidInfoAll();
   CovidInfoCountry covidDataCountry = CovidInfoCountry();
   List<CovidInfoCountry> sortedCountryData = [];
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (prefs.containsKey('countryName')) {
       covidDataCountry = await CovidHandler.getCovidData(
         Uri.parse(
-          'https://disease.sh/v3/covid-19/countries/${countryName.toLowerCase()}',
+          'https://disease.sh/v3/covid-19/countries/${countryName!.toLowerCase()}',
         ),
       );
     }
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       setState(() {
         for (CovidInfoCountry data in covidAllCountryData) {
-          if (data.countryName.toLowerCase() == countryName) {
+          if (data.countryName!.toLowerCase() == countryName) {
             isSetCountry = true;
             break;
           }
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
             'https://disease.sh/v3/covid-19/countries/$countryName',
           ),
         );
-        countryName = covidDataCountry.countryName;
+        countryName = covidDataCountry.countryName!;
         setState(() {});
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('countryName', countryName);
@@ -219,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: UpdateSection(
-                    countryName,
+                    countryName!,
                     covidDataAll,
                     covidDataCountry,
                     isLoading,

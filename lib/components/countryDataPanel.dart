@@ -7,7 +7,7 @@ import '../screens/countryScreen.dart';
 class CountryDataPanel extends StatelessWidget {
   const CountryDataPanel(this.covidData);
 
-  final CovidInfoCountry covidData;
+  final CovidInfoCountry? covidData;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CountryDataPanel extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         CountryScreen.routeName,
-        arguments: covidData.countryName,
+        arguments: covidData!.countryName!,
       ),
       splashColor: Colors.grey[200],
       child: Container(
@@ -30,12 +30,12 @@ class CountryDataPanel extends StatelessWidget {
                   SizedBox(
                     width: 50,
                     height: 45,
-                    child: Image.network(covidData.flag),
+                    child: Image.network(covidData!.flag!),
                   ),
                   SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      covidData.countryName,
+                      covidData!.countryName!,
                       style: TextStyle(
                         color: kTextMediumColor,
                         fontSize: 15,
@@ -51,7 +51,7 @@ class CountryDataPanel extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(
-                  'Cases: ${covidData.cases} (+${covidData.todayCases})',
+                  'Cases: ${covidData!.cases!} (+${covidData!.todayCases!})',
                   style: TextStyle(
                     color: Colors.blueAccent[700],
                     fontSize: 14,
@@ -60,7 +60,7 @@ class CountryDataPanel extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  'Deaths: ${covidData.deaths} (+${covidData.todayDeaths})',
+                  'Deaths: ${covidData!.deaths!} (+${covidData!.todayDeaths!})',
                   style: TextStyle(
                     color: Colors.red[700],
                     fontSize: 14,

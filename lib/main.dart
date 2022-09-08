@@ -25,11 +25,13 @@ class CovidTracker extends StatelessWidget {
       },
       onGenerateRoute: (RouteSettings settings) {
         Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
-          CountryScreen.routeName: (_) => CountryScreen(settings.arguments),
+          CountryScreen.routeName: (_) => CountryScreen(
+                settings.arguments.toString(),
+              ),
         };
-        WidgetBuilder builder = routes[settings.name];
+        WidgetBuilder? builder = routes[settings.name];
 
-        return MaterialPageRoute(builder: (context) => builder(context));
+        return MaterialPageRoute(builder: (context) => builder!(context));
       },
     );
   }

@@ -18,13 +18,13 @@ class UpdateSection extends StatelessWidget {
     this.handler,
   );
 
-  final String countryName;
-  final CovidInfoAll covidDataAll;
-  final CovidInfoCountry covidDataCountry;
-  final bool isLoading;
-  final bool isSetCountry;
-  final bool isWrongCountry;
-  final Function handler;
+  final String? countryName;
+  final CovidInfoAll? covidDataAll;
+  final CovidInfoCountry? covidDataCountry;
+  final bool? isLoading;
+  final bool? isSetCountry;
+  final bool? isWrongCountry;
+  final Function? handler;
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +34,19 @@ class UpdateSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 10),
-          UpdateSectionTab(countryName),
+          UpdateSectionTab(countryName!),
           SizedBox(height: 3),
           Container(
             height: 260,
             child: TabBarView(
               children: <Widget>[
                 UpdateSectionGrid(covidDataAll),
-                isSetCountry || countryName != null
+                isSetCountry! || countryName != null
                     ? UpdateSectionGrid(covidDataCountry)
                     : CountrySearchForm(
-                        handler,
-                        isLoading,
-                        isWrongCountry,
+                        handler!,
+                        isLoading!,
+                        isWrongCountry!,
                       )
               ],
             ),
@@ -102,9 +102,9 @@ class UpdateSectionGrid extends StatelessWidget {
 class UpdatePanel extends StatelessWidget {
   const UpdatePanel({this.title, this.value, this.color});
 
-  final String title;
-  final int value;
-  final Color color;
+  final String? title;
+  final int? value;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class UpdatePanel extends StatelessWidget {
                 height: 38,
                 padding: EdgeInsets.all(9),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.2),
+                  color: color!.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: SvgPicture.asset(
@@ -135,7 +135,7 @@ class UpdatePanel extends StatelessWidget {
               SizedBox(width: 6),
               Expanded(
                 child: Text(
-                  title,
+                  title!,
                   style: Theme.of(context).textTheme.headline4,
                   overflow: TextOverflow.ellipsis,
                 ),

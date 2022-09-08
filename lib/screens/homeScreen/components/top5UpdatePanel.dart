@@ -101,16 +101,16 @@ class CountryUpdatePanel extends StatelessWidget {
     this.values,
   });
 
-  final String title;
-  final String subtitle;
-  final List<CovidInfoCountry> data;
-  final List<int> values;
+  final String? title;
+  final String? subtitle;
+  final List<CovidInfoCountry>? data;
+  final List<int>? values;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      shadowColor: Colors.grey[50].withOpacity(0.6),
+      shadowColor: Colors.grey[50]!.withOpacity(0.6),
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -123,20 +123,20 @@ class CountryUpdatePanel extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 15, left: 15),
               child: Text(
-                title,
+                title!,
                 style: Theme.of(context).textTheme.headline2,
               ),
             ),
             const SizedBox(height: 10),
-            data.isNotEmpty
+            data!.isNotEmpty
                 ? Column(
                     children: List.generate(
-                      data.length,
+                      data!.length,
                       (int index) {
                         return CountryPanel(
-                          data[index],
-                          subtitle,
-                          values[index],
+                          data![index],
+                          subtitle!,
+                          values![index],
                         );
                       },
                     ),
@@ -177,11 +177,11 @@ class CountryPanel extends StatelessWidget {
                 SizedBox(
                   width: 50,
                   height: 35,
-                  child: Image.network(covidData.flag),
+                  child: Image.network(covidData.flag!),
                 ),
                 SizedBox(width: 10),
                 Text(
-                  covidData.countryName,
+                  covidData.countryName!,
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ],
