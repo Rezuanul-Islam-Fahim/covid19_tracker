@@ -39,4 +39,10 @@ ThemeData get appTheme => ThemeData(
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: kPrimaryColor.withOpacity(0.8),
       ),
+      listTileTheme: ListTileThemeData(
+        selectedColor: kPrimaryColor,
+      ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: kPrimaryColor,
+      ),
     );
