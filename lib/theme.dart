@@ -8,7 +8,7 @@ ThemeData get appTheme => ThemeData(
       primaryColor: kPrimaryColor,
       appBarTheme: ThemeData.light().appBarTheme.copyWith(
             backgroundColor: kPrimaryColor,
-            systemOverlayStyle: SystemUiOverlayStyle.dark,
+            systemOverlayStyle: SystemUiOverlayStyle.light,
           ),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline2: TextStyle(
