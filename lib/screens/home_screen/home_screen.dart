@@ -7,12 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../constant.dart';
 import '../../components/search.dart';
 import '../../components/drawer.dart';
-import '../../models/covidApiHandler.dart';
-import '../../models/covidInfoAll.dart';
-import '../../models/covidInfoCountry.dart';
-import '../allCountryScreen.dart';
-import 'components/top5UpdatePanel.dart';
-import 'components/updateSection.dart';
+import '../../models/covid_api_handler.dart';
+import '../../models/covid_info_all.dart';
+import '../../models/covid_info_country.dart';
+import '../all_country_screen.dart';
+import 'components/top5_update_panel.dart';
+import 'components/update_section.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
