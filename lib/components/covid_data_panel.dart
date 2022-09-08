@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/covidInfoCountry.dart';
+import '../models/covid_info_country.dart';
 
 class CovidDataPanel extends StatelessWidget {
   const CovidDataPanel(this.covidData, [this.isTitle = false]);

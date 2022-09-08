@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../models/covidApiHandler.dart';
-import '../models/covidInfoCountry.dart';
-import '../components/bodyLoader.dart';
-import '../components/covidDataPanel.dart';
+import '../models/covid_api_handler.dart';
+import '../models/covid_info_country.dart';
+import '../components/body_loader.dart';
+import '../components/covid_data_panel.dart';
 
 class CountryScreen extends StatefulWidget {
   const CountryScreen(this.countryName);

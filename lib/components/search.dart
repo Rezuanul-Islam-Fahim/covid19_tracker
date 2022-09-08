@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../models/covidInfoCountry.dart';
-import 'countryDataBuilder.dart';
-import 'covidDataPanel.dart';
+import '../models/covid_info_country.dart';
+import 'country_data_builder.dart';
+import 'covid_data_panel.dart';
 
 class Search extends SearchDelegate {
   Search(this.covidData);

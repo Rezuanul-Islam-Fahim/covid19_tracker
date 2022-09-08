@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../models/covidApiHandler.dart';
-import '../models/covidInfoCountry.dart';
-import '../components/bodyLoader.dart';
-import '../components/countryDataBuilder.dart';
+import '../models/covid_api_handler.dart';
+import '../models/covid_info_country.dart';
+import '../components/body_loader.dart';
+import '../components/country_data_builder.dart';
 import '../components/search.dart';
 import '../components/drawer.dart';
 

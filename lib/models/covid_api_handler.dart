@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'covidInfoAll.dart';
-import 'covidInfoCountry.dart';
+import 'covid_info_all.dart';
+import 'covid_info_country.dart';
 
 class CovidHandler {
   static Future<dynamic> getCovidData(Uri apiUrl, {int? fetchLength}) async {

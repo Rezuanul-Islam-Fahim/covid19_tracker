@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/covidInfoCountry.dart';
-import '../../../screens/homeScreen/components/countryPanelLoader.dart';
-import '../../countryScreen.dart';
+import '../../../models/covid_info_country.dart';
+import 'country_panel_loader.dart';
+import '../../country_screen.dart';
 
 class Top5UpdatePanel extends StatelessWidget {
   const Top5UpdatePanel(
