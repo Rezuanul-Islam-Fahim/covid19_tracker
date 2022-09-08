@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'theme.dart';
-import 'screens/homeScreen/homeScreen.dart';
-import 'screens/allCountryScreen.dart';
-import 'screens/countryScreen.dart';
-import 'screens/authorScreen.dart';
-import 'screens/settingScreen.dart';
+import 'screens/home_screen/home_screen.dart';
+import 'screens/all_country_screen.dart';
+import 'screens/country_screen.dart';
+import 'screens/author_screen.dart';
+import 'screens/setting_screen.dart';
 
 void main() => runApp(CovidTracker());
 

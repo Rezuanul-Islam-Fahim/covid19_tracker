@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../screens/allCountryScreen.dart';
-import '../screens/authorScreen.dart';
-import '../screens/settingScreen.dart';
-import '../screens/homeScreen/homeScreen.dart';
+import '../screens/all_country_screen.dart';
+import '../screens/author_screen.dart';
+import '../screens/setting_screen.dart';
+import '../screens/home_screen/home_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({this.pageIndex});

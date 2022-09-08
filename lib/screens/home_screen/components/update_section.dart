@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constant.dart';
-import '../../../models/covidInfoAll.dart';
-import '../../../models/covidInfoCountry.dart';
-import 'updateSectionTab.dart';
-import 'countrySearch.dart';
+import '../../../models/covid_info_all.dart';
+import '../../../models/covid_info_country.dart';
+import 'update_section_tab.dart';
+import 'country_search.dart';
 
 class UpdateSection extends StatelessWidget {
   const UpdateSection(
