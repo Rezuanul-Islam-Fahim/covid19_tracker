@@ -219,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: UpdateSection(
-                    countryName!,
+                    countryName,
                     covidDataAll,
                     covidDataCountry,
                     isLoading,

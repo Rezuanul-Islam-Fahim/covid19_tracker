@@ -7,6 +7,7 @@ ThemeData get appTheme => ThemeData(
       scaffoldBackgroundColor: kBackgroundColor,
       primaryColor: kPrimaryColor,
       appBarTheme: ThemeData.light().appBarTheme.copyWith(
+            backgroundColor: kPrimaryColor,
             systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
       textTheme: ThemeData.light().textTheme.copyWith(

@@ -10,10 +10,12 @@ class CovidHandler {
   static Future<dynamic> getCovidData(Uri apiUrl, {int? fetchLength}) async {
     http.Response response = await http.get(apiUrl);
 
-    return parsedJSON(response.body, fetchLength!);
+    return fetchLength != null
+        ? parsedJSON(response.body, fetchLength)
+        : parsedJSON(response.body);
   }
 
-  static dynamic parsedJSON(String response, int? fetchLength) {
+  static dynamic parsedJSON(String response, [int? fetchLength]) {
     dynamic parsedData = json.decode(response);
 
     if (parsedData is List) {

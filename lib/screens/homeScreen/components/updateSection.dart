@@ -34,7 +34,7 @@ class UpdateSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 10),
-          UpdateSectionTab(countryName!),
+          UpdateSectionTab(countryName != null ? countryName : null),
           SizedBox(height: 3),
           Container(
             height: 260,

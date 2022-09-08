@@ -104,7 +104,7 @@ class CountryUpdatePanel extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final List<CovidInfoCountry>? data;
-  final List<int>? values;
+  final List<int?>? values;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +136,7 @@ class CountryUpdatePanel extends StatelessWidget {
                         return CountryPanel(
                           data![index],
                           subtitle!,
-                          values![index],
+                          values![index]!,
                         );
                       },
                     ),
