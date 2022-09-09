@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.covid19_tracker">
+    package="com.rezuanulfahim.covid19_tracker">
    <application
         android:label="Covid19 Tracker"
         android:name="${applicationName}"
