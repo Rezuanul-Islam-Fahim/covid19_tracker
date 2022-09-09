@@ -10,8 +10,7 @@ ThemeData get appTheme => ThemeData(
             backgroundColor: kPrimaryColor,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             titleTextStyle: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
+              fontSize: 19,
             ),
           ),
       textTheme: ThemeData.light().textTheme.copyWith(
