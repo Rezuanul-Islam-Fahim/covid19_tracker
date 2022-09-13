@@ -4,7 +4,7 @@ Covid-19 Tracker mobile app for Android & IOS devices built with Dart & Flutter 
 
 <img width="80%" src="screenshots/banner.png">
 
-<!-- <a href="https://drive.google.com/file/d/1Crz3upbc9WML2XDicfVO50brSP1Owi-Q/view?usp=sharing"><img src="https://boostapk.com/wp-content/uploads/2020/08/fall-guys-android.png" width=200></a> -->
+<a href="https://drive.google.com/file/d/1j_-d_gdy9b2Kz1EQVAw0vaxl9xvFyjTq/view?usp=sharing"><img src="https://boostapk.com/wp-content/uploads/2020/08/fall-guys-android.png" width=200></a>
 
 ### Support this project
 
