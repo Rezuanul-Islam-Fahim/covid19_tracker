@@ -12,7 +12,7 @@ Covid-19 Tracker mobile app for Android & IOS devices built with Dart & Flutter 
 
 ## Screenshots
 
-<p> <img height="510px" src="screenshots/screenshot1.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot2.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot3.jpg"> &nbsp; </p> <p> <img height="510px" src="screenshots/screenshot4.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot5.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot6.jpg"> &nbsp;
+<p> <img height="510px" src="screenshots/screenshot1.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot2.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot3.jpg"> &nbsp; </p> <p> <img height="510px" src="screenshots/screenshot4.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot5.jpg"> &nbsp; <img height="510px" src="screenshots/screenshot6.jpg"> &nbsp; </p>
 
 ## License
 
