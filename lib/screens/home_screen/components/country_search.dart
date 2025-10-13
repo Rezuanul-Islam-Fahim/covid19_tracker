@@ -16,7 +16,7 @@ class CountrySearchForm extends StatelessWidget {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
     ),
-    backgroundColor: kPrimaryColor.withOpacity(0.8),
+    backgroundColor: kPrimaryColor.withValues(alpha: 0.8),
   );
 
   @override
@@ -30,7 +30,7 @@ class CountrySearchForm extends StatelessWidget {
                 SizedBox(width: 10),
                 Text(
                   'Loading...',
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),
@@ -100,7 +100,7 @@ class CountrySearchForm extends StatelessWidget {
             ),
           ),
           filled: true,
-          fillColor: kBackgroundColor.withOpacity(0.6),
+          fillColor: kBackgroundColor.withValues(alpha: 0.6),
           hintText: 'Enter Country Name',
         ),
       ),

@@ -21,7 +21,7 @@ class UpdateSectionTab extends StatelessWidget {
           unselectedLabelColor: kPrimaryColor,
           indicator: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: kPrimaryColor.withOpacity(0.8),
+            color: kPrimaryColor.withValues(alpha: 0.8),
           ),
           indicatorSize: TabBarIndicatorSize.label,
           indicatorWeight: 0,
@@ -31,7 +31,7 @@ class UpdateSectionTab extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: kPrimaryColor.withOpacity(0.4),
+                    color: kPrimaryColor.withValues(alpha: 0.4),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(30),
@@ -46,7 +46,7 @@ class UpdateSectionTab extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: kPrimaryColor.withOpacity(0.4),
+                    color: kPrimaryColor.withValues(alpha: 0.4),
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(30),

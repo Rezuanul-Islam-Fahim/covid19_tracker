@@ -57,7 +57,7 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
               icon: SvgPicture.asset(
                 'assets/icons/menu.svg',
                 width: 23,
-                color: Colors.white,
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
               splashRadius: 22,
               onPressed: () => Scaffold.of(context).openDrawer(),
@@ -69,7 +69,7 @@ class _AllCountryScreenState extends State<AllCountryScreen> {
             icon: SvgPicture.asset(
               'assets/icons/search.svg',
               width: 22,
-              color: Colors.white,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
             splashRadius: 22,
             onPressed: () => showSearch(

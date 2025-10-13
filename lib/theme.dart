@@ -14,33 +14,33 @@ ThemeData get appTheme => ThemeData(
             ),
           ),
       textTheme: ThemeData.light().textTheme.copyWith(
-            headline2: TextStyle(
+            displayMedium: TextStyle(
               color: kTextColor,
               fontSize: 19,
               fontWeight: FontWeight.w700,
             ),
-            headline3: TextStyle(
+            displaySmall: TextStyle(
               color: kTextMediumColor,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
-            headline4: TextStyle(
+            headlineMedium: TextStyle(
               color: kTextMediumColor,
               fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
-            headline5: TextStyle(
+            headlineSmall: TextStyle(
               color: kTextLightColor,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
-            headline6: TextStyle(
+            titleLarge: TextStyle(
               color: Colors.white,
               fontSize: 16,
             ),
           ),
       colorScheme: ColorScheme.fromSwatch().copyWith(
-        secondary: kPrimaryColor.withOpacity(0.8),
+        secondary: kPrimaryColor.withValues(alpha: 0.8),
       ),
       listTileTheme: ListTileThemeData(
         selectedColor: kPrimaryColor,

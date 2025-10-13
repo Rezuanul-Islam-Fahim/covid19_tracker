@@ -124,19 +124,19 @@ class UpdatePanel extends StatelessWidget {
                 height: 38,
                 padding: EdgeInsets.all(9),
                 decoration: BoxDecoration(
-                  color: color!.withOpacity(0.2),
+                  color: color!.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/running.svg',
-                  color: color,
+                  colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
                 ),
               ),
               SizedBox(width: 6),
               Expanded(
                 child: Text(
                   title!,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -149,12 +149,12 @@ class UpdatePanel extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       value.toString(),
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     SizedBox(height: 4),
                     Text(
                       'People',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ],
                 )

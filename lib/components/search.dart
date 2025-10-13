@@ -29,7 +29,7 @@ class Search extends SearchDelegate {
   Widget noResultText(BuildContext context) => Center(
         child: Text(
           'No Results Found',
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.displaySmall,
         ),
       );
 
