@@ -105,11 +105,11 @@ A comprehensive COVID-19 tracking mobile application built with Flutter 3.5+, pr
 
 Before you begin, ensure you have the following installed:
 
-- **Flutter SDK** (3.5.0 or higher)
+- **Flutter SDK** (3.35.6 or higher)
   ```bash
   flutter --version
   ```
-- **Dart SDK** (3.5.0 or higher)
+- **Dart SDK** (3.9.2 or higher)
 - **Android Studio** or **VS Code** with Flutter extensions
 - **Xcode** (for iOS development, macOS only)
 - **Git**
@@ -375,7 +375,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2025 Rezuanul Islam Fahim
+Copyright (c) 2024-2025 Rezuanul Islam Fahim
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

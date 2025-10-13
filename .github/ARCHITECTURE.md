@@ -52,7 +52,7 @@
 │  │ with Version │  │ Artifact     │                            │
 │  └──────────────┘  └──────────────┘                            │
 │                                                                  │
-│  APK Name: covid19_tracker-{VERSION}.apk (e.g., 1.1.0+2)       │
+│  APK Name: covid19_tracker-{VERSION}.apk (e.g., 1.1.0+5)       │
 │  Retention: 30 days                                             │
 └────────────────────────────┬────────────────────────────────────┘
                              │
@@ -263,7 +263,8 @@ Developer                GitHub Actions              Appetize.io
 ---
 
 **Architecture Version:** 1.1.0  
-**Last Updated:** October 2024  
-**Current App Version:** 1.1.0+2  
+**Last Updated:** October 2025  
+**Current App Version:** 1.1.0+5  
 **Flutter Version:** 3.5.6  
+**Dart Version:** 3.9.2  
 **Java Version:** 17 (Zulu Distribution)
