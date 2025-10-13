@@ -1,7 +1,7 @@
 # COVID-19 Tracker - AI Coding Instructions
 
 ## Project Overview
-Flutter 3.5+ cross-platform COVID-19 statistics tracker. Uses disease.sh API for real-time pandemic data across Android, iOS, Web, Windows, macOS, and Linux.
+Flutter 3.35.6+ (Dart 3.9.2+) cross-platform COVID-19 statistics tracker. Uses disease.sh API for real-time pandemic data across Android, iOS, Web, Windows, macOS, and Linux. Current version: 1.1.0+5.
 
 ## Architecture Pattern
 
