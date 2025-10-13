@@ -6,6 +6,9 @@
 [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
 [![License](https://img.shields.io/github/license/rezuanul-islam-fahim/covid19_tracker?style=for-the-badge)](https://github.com/Rezuanul-Islam-Fahim/covid19_tracker/blob/master/LICENSE)
 
+[![Build and Deploy](https://img.shields.io/github/actions/workflow/status/Rezuanul-Islam-Fahim/covid19_tracker/build-and-deploy-appetize.yml?branch=automation&style=for-the-badge&logo=github-actions&label=Build%20%26%20Deploy)](https://github.com/Rezuanul-Islam-Fahim/covid19_tracker/actions/workflows/build-and-deploy-appetize.yml)
+[![Appetize.io](https://img.shields.io/badge/Live%20Demo-Appetize.io-brightgreen?style=for-the-badge&logo=android)](https://appetize.io/app/b_c4pr75vegtk5crqsfs7ik4xw5m)
+
 A comprehensive COVID-19 tracking mobile application for Android & iOS devices, providing real-time global and country-specific pandemic statistics.
 
 <img width="80%" src="screenshots/banner.png" alt="COVID-19 Tracker Banner">
@@ -32,6 +35,7 @@ A comprehensive COVID-19 tracking mobile application for Android & iOS devices, 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Running the App](#running-the-app)
+- [CI/CD & Deployment](#-cicd--deployment)
 - [Project Structure](#-project-structure)
 - [Architecture](#-architecture)
 - [Technologies Used](#-technologies-used)
@@ -156,7 +160,47 @@ flutter build ios --release
 
 ---
 
-## 📂 Project Structure
+## � CI/CD & Deployment
+
+This project includes an automated CI/CD pipeline that builds and deploys the app to Appetize.io for instant browser-based testing.
+
+### 🚀 Automated Deployment Features
+
+- ✅ **Automatic APK Building** - Builds release APK on every push
+- ✅ **Appetize Integration** - Deploys to Appetize.io for instant testing
+- ✅ **Smart Caching** - Speeds up builds by 3x with intelligent caching
+- ✅ **Version Management** - Automatic versioning with build numbers
+- ✅ **Artifact Storage** - 30-day APK artifact retention
+- ✅ **PR Integration** - Automatic deployment info in pull request comments
+
+### ⚡ Build Performance
+
+| Build Type | Duration | Status |
+|------------|----------|--------|
+| First Build | ~10-15 min | Full build with all dependencies |
+| Cached Build | ~3-5 min | 3x faster with smart caching |
+
+### 📚 Documentation
+
+- **[Quick Setup Guide](.github/APPETIZE_SETUP.md)** - Get started in 5 minutes
+- **[Detailed README](.github/workflows/README.md)** - Complete workflow documentation
+- **[Architecture Diagram](.github/ARCHITECTURE.md)** - Visual workflow overview
+
+### 🎯 Quick Start CI/CD
+
+1. **Set up Appetize.io account** and get your API token
+2. **Add GitHub Secret**: `APPETIZE_API_TOKEN`
+3. **Push to main/master branch** - Workflow runs automatically
+4. **Copy the Public Key** from workflow output
+5. **Add as secret**: `APPETIZE_PUBLIC_KEY`
+
+**That's it!** Future deployments will automatically update your app.
+
+For detailed instructions, see the [Quick Setup Guide](.github/APPETIZE_SETUP.md).
+
+---
+
+## �📂 Project Structure
 
 ```
 covid19_tracker/
