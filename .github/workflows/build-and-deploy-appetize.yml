@@ -157,6 +157,24 @@ jobs:
             echo "app_url=${{ steps.upload_new.outputs.app_url }}" >> $GITHUB_OUTPUT
           fi
 
+      - name: Get artifact ID
+        id: get_artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            const artifact = artifacts.data.artifacts.find(a => a.name === '${{ env.ARTIFACT_NAME }}');
+            if (artifact) {
+              core.setOutput('artifact_id', artifact.id);
+              console.log(`Found artifact ID: ${artifact.id}`);
+            } else {
+              core.setFailed('Artifact not found');
+            }
+
       - name: Create deployment summary
         run: |
           echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
@@ -168,9 +186,9 @@ jobs:
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📦 Build Artifact" >> $GITHUB_STEP_SUMMARY
-          echo "**Download APK:** [${{ env.APK_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
+          echo "**Download APK:** [${{ env.ARTIFACT_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.get_artifact.outputs.artifact_id }})" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "> 💡 **Tip:** Click the artifact name \`${{ env.ARTIFACT_NAME }}\` on the artifacts page to download the APK directly." >> $GITHUB_STEP_SUMMARY
+          echo "> 💡 **Tip:** Click the link above to download the APK directly." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Appetize Deployment" >> $GITHUB_STEP_SUMMARY
           echo "- **Status:** ✅ Success" >> $GITHUB_STEP_SUMMARY
@@ -209,9 +227,9 @@ jobs:
               - **Artifact Name:** ${{ env.ARTIFACT_NAME }}
               
               ### 📦 Build Artifact
-              Download APK: [${{ env.APK_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)
+              **Download APK:** [${{ env.ARTIFACT_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.get_artifact.outputs.artifact_id }})
               
-              > 💡 **Tip:** Click the artifact name \`${{ env.ARTIFACT_NAME }}\` on the artifacts page to download the APK directly.
+              > 💡 **Tip:** Click the link above to download the APK directly.
               
               ### Appetize Deployment
               - **Status:** ✅ Success
