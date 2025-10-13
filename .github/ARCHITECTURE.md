@@ -5,7 +5,7 @@
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     TRIGGER EVENT                                │
-│  (Push to main/master/automation, PR, or Manual trigger)        │
+│  (Pull Request to master branch or Manual workflow dispatch)    │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
@@ -13,7 +13,7 @@
 │                    SETUP ENVIRONMENT                             │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
 │  │ Checkout     │  │ Setup Java   │  │ Setup Flutter │         │
-│  │ Repository   │→ │ JDK 17       │→ │ SDK          │         │
+│  │ Repository   │→ │ JDK 17 (Zulu)│→ │ 3.5.6 Stable │         │
 │  └──────────────┘  └──────────────┘  └──────────────┘         │
 └────────────────────────────┬────────────────────────────────────┘
                              │
@@ -33,9 +33,15 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │                    BUILD PROCESS                                 │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │ flutter pub  │→ │ flutter      │→ │ flutter build│         │
-│  │ get          │  │ analyze      │  │ apk --release│         │
+│  │ flutter      │→ │ flutter pub  │→ │ flutter      │         │
+│  │ doctor -v    │  │ get          │  │ analyze      │         │
 │  └──────────────┘  └──────────────┘  └──────────────┘         │
+│                                              │                   │
+│                                              ▼                   │
+│                                    ┌──────────────┐             │
+│                                    │ flutter build│             │
+│                                    │ apk --release│             │
+│                                    └──────────────┘             │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
@@ -46,7 +52,8 @@
 │  │ with Version │  │ Artifact     │                            │
 │  └──────────────┘  └──────────────┘                            │
 │                                                                  │
-│  APK Name: covid19_tracker-v{VERSION}-{BUILD_NUMBER}.apk       │
+│  APK Name: covid19_tracker-{VERSION}.apk (e.g., 1.1.0+2)       │
+│  Retention: 30 days                                             │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
@@ -107,8 +114,8 @@ Layer 2: Pub Dependencies Cache
 └── Saves: 1-2 minutes per build
 
 Layer 3: Gradle Dependencies Cache
-├── Location: ~/.gradle/caches, ~/.gradle/wrapper
-├── Key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+├── Location: ~/.gradle/caches, ~/.gradle/wrapper, ~/.android/build-cache
+├── Key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', 'gradle-wrapper.properties') }}
 ├── Size: ~500 MB - 1 GB
 └── Saves: 3-5 minutes per build
 
@@ -197,26 +204,30 @@ First Build (No Cache):
 │ Checkout           ████ 30s                                │
 │ Setup Java         ██████████ 60s                          │
 │ Setup Flutter      ████████████████████ 120s               │
+│ Flutter Doctor     ████ 20s                                │
 │ Pub Get            ████████████ 80s                        │
+│ Analyze            ████ 30s                                │
 │ Gradle Build       ████████████████████████████ 180s       │
 │ Flutter Build      ████████████████████████████████ 200s   │
 │ Appetize Upload    ████████ 45s                            │
 └────────────────────────────────────────────────────────────┘
-Total: ~12 minutes
+Total: ~12.5 minutes
 
 Subsequent Build (With Cache):
 ┌────────────────────────────────────────────────────────────┐
 │ Checkout           ████ 30s                                │
 │ Setup Java         ██ 15s (cached)                         │
 │ Setup Flutter      ████ 25s (cached)                       │
+│ Flutter Doctor     ██ 10s                                  │
 │ Pub Get            ██ 15s (cached)                         │
+│ Analyze            ██ 10s                                  │
 │ Gradle Build       ████████ 45s (cached)                   │
 │ Flutter Build      ████████████████ 90s                    │
 │ Appetize Upload    ████████ 45s                            │
 └────────────────────────────────────────────────────────────┘
-Total: ~4 minutes
+Total: ~4.5 minutes
 
-⚡ Speed Improvement: 3x faster!
+⚡ Speed Improvement: ~3x faster!
 ```
 
 ## 🔄 Continuous Deployment Flow
@@ -251,5 +262,8 @@ Developer                GitHub Actions              Appetize.io
 
 ---
 
-**Architecture Version:** 1.0.0  
-**Last Updated:** October 2025
+**Architecture Version:** 1.1.0  
+**Last Updated:** October 2024  
+**Current App Version:** 1.1.0+2  
+**Flutter Version:** 3.5.6  
+**Java Version:** 17 (Zulu Distribution)

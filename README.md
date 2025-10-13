@@ -9,7 +9,7 @@
 [![Build and Deploy](https://img.shields.io/github/actions/workflow/status/Rezuanul-Islam-Fahim/covid19_tracker/build-and-deploy-appetize.yml?branch=automation&style=for-the-badge&logo=github-actions&label=Build%20%26%20Deploy)](https://github.com/Rezuanul-Islam-Fahim/covid19_tracker/actions/workflows/build-and-deploy-appetize.yml)
 [![Appetize.io](https://img.shields.io/badge/Live%20Demo-Appetize.io-brightgreen?style=for-the-badge&logo=android)](https://appetize.io/app/b_c4pr75vegtk5crqsfs7ik4xw5m)
 
-A comprehensive COVID-19 tracking mobile application for Android & iOS devices, providing real-time global and country-specific pandemic statistics.
+A comprehensive COVID-19 tracking mobile application built with Flutter 3.5+, providing real-time global and country-specific pandemic statistics with cross-platform support for Android, iOS, Web, Windows, macOS, and Linux.
 
 <img width="80%" src="screenshots/banner.png" alt="COVID-19 Tracker Banner">
 
@@ -68,8 +68,8 @@ A comprehensive COVID-19 tracking mobile application for Android & iOS devices, 
 - **Smooth Animations**: Enhanced user experience with fluid transitions
 
 ### 📱 Cross-Platform
-- Full support for Android and iOS devices
-- Consistent experience across platforms
+- Full support for Android, iOS, Web, Windows, macOS, and Linux
+- Consistent experience across all platforms
 - Native performance with Flutter
 
 ### 🌐 Offline Support
@@ -105,11 +105,11 @@ A comprehensive COVID-19 tracking mobile application for Android & iOS devices, 
 
 Before you begin, ensure you have the following installed:
 
-- **Flutter SDK** (3.0.0 or higher)
+- **Flutter SDK** (3.5.0 or higher)
   ```bash
   flutter --version
   ```
-- **Dart SDK** (2.17.0 or higher)
+- **Dart SDK** (3.5.0 or higher)
 - **Android Studio** or **VS Code** with Flutter extensions
 - **Xcode** (for iOS development, macOS only)
 - **Git**
@@ -148,6 +148,26 @@ cd ..
 flutter run
 ```
 
+#### For Web
+```bash
+flutter run -d chrome
+```
+
+#### For Windows
+```bash
+flutter run -d windows
+```
+
+#### For macOS
+```bash
+flutter run -d macos
+```
+
+#### For Linux
+```bash
+flutter run -d linux
+```
+
 #### Build APK (Android)
 ```bash
 flutter build apk --release
@@ -156,6 +176,11 @@ flutter build apk --release
 #### Build IPA (iOS)
 ```bash
 flutter build ios --release
+```
+
+#### Build Web
+```bash
+flutter build web --release
 ```
 
 ---
@@ -182,8 +207,6 @@ This project includes an automated CI/CD pipeline that builds and deploys the ap
 
 ### 📚 Documentation
 
-- **[Quick Setup Guide](.github/APPETIZE_SETUP.md)** - Get started in 5 minutes
-- **[Detailed README](.github/workflows/README.md)** - Complete workflow documentation
 - **[Architecture Diagram](.github/ARCHITECTURE.md)** - Visual workflow overview
 
 ### 🎯 Quick Start CI/CD
@@ -191,12 +214,9 @@ This project includes an automated CI/CD pipeline that builds and deploys the ap
 1. **Set up Appetize.io account** and get your API token
 2. **Add GitHub Secret**: `APPETIZE_API_TOKEN`
 3. **Push to main/master branch** - Workflow runs automatically
-4. **Copy the Public Key** from workflow output
-5. **Add as secret**: `APPETIZE_PUBLIC_KEY`
+4. **Check workflow output** - View build results in GitHub Actions
 
-**That's it!** Future deployments will automatically update your app.
-
-For detailed instructions, see the [Quick Setup Guide](.github/APPETIZE_SETUP.md).
+**That's it!** The workflow automatically builds and deploys your app to Appetize.io.
 
 ---
 
@@ -221,15 +241,29 @@ covid19_tracker/
 │   │   └── covid_info_country.dart
 │   └── screens/                  # App screens
 │       ├── home_screen/
+│       │   ├── home_screen.dart
+│       │   └── components/
+│       │       ├── country_panel_loader.dart
+│       │       ├── country_search.dart
+│       │       ├── top5_update_panel.dart
+│       │       ├── update_section.dart
+│       │       └── update_section_tab.dart
 │       ├── all_country_screen.dart
 │       ├── country_screen.dart
 │       ├── author_screen.dart
 │       └── setting_screen.dart
 ├── assets/                       # Static assets
 │   └── icons/
+├── .github/                      # GitHub workflows and CI/CD
+│   ├── workflows/
+│   │   └── build-and-deploy-appetize.yml
+│   └── ARCHITECTURE.md
 ├── android/                      # Android-specific files
 ├── ios/                          # iOS-specific files
-├── test/                         # Unit and widget tests
+├── linux/                        # Linux-specific files
+├── macos/                        # macOS-specific files
+├── windows/                      # Windows-specific files
+├── web/                          # Web-specific files
 ├── pubspec.yaml                  # Project dependencies
 └── README.md                     # This file
 ```
@@ -246,7 +280,7 @@ This app follows a **clean architecture** pattern with clear separation of conce
 
 ### Key Design Patterns
 - **Repository Pattern**: For data management
-- **Provider Pattern**: For state management (if applicable)
+- **MVC Pattern**: Model-View-Controller architecture
 - **Singleton Pattern**: For API clients
 
 ---
@@ -261,9 +295,10 @@ This app follows a **clean architecture** pattern with clear separation of conce
 | ![Material Design](https://img.shields.io/badge/Material%20Design-757575?logo=material-design&logoColor=white) | Design system |
 
 ### Key Dependencies
-- `http`: For making API requests
-- `shared_preferences`: For local data persistence
-- `provider` / `flutter_bloc`: For state management
+- `http` (^1.2.2): For making API requests
+- `shared_preferences` (^2.3.3): For local data persistence
+- `flutter_svg` (^2.0.16): For SVG icon rendering
+- `cupertino_icons` (^1.0.8): iOS-style icons
 - `intl`: For internationalization and formatting
 
 ---
@@ -340,7 +375,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2022 Rezuanul Islam Fahim
+Copyright (c) 2025 Rezuanul Islam Fahim
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

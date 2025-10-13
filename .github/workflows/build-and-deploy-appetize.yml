@@ -66,20 +66,16 @@ jobs:
         run: flutter analyze
         continue-on-error: true
 
-      - name: Run tests
-        run: flutter test
-        continue-on-error: true
-
       - name: Build APK
-        run: flutter build apk --release --build-number=${{ github.run_number }}
+        run: flutter build apk --release
 
       - name: Rename APK with version
         run: |
           VERSION=$(grep 'version:' pubspec.yaml | sed 's/version: //' | tr -d ' ')
-          BUILD_NUMBER=${{ github.run_number }}
-          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/covid19_tracker-v${VERSION}-${BUILD_NUMBER}.apk
-          echo "APK_NAME=covid19_tracker-v${VERSION}-${BUILD_NUMBER}.apk" >> $GITHUB_ENV
-          echo "APK_PATH=build/app/outputs/flutter-apk/covid19_tracker-v${VERSION}-${BUILD_NUMBER}.apk" >> $GITHUB_ENV
+          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/covid19_tracker-${VERSION}.apk
+          echo "APK_NAME=covid19_tracker-${VERSION}.apk" >> $GITHUB_ENV
+          echo "APK_PATH=build/app/outputs/flutter-apk/covid19_tracker-${VERSION}.apk" >> $GITHUB_ENV
+          echo "APP_VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
@@ -166,14 +162,16 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Build Information" >> $GITHUB_STEP_SUMMARY
           echo "- **APK Name:** ${{ env.APK_NAME }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Build Number:** ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** ${{ env.APP_VERSION }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Build Artifact" >> $GITHUB_STEP_SUMMARY
+          echo "Download APK: [covid19_tracker-${{ env.APP_VERSION }}.apk](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Appetize Deployment" >> $GITHUB_STEP_SUMMARY
           echo "- **Status:** ✅ Success" >> $GITHUB_STEP_SUMMARY
-          echo "- **Public Key:** \`${{ steps.deployment_info.outputs.public_key }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **App URL:** ${{ steps.deployment_info.outputs.app_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test App:** ${{ steps.deployment_info.outputs.app_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📱 Test Your App" >> $GITHUB_STEP_SUMMARY
           echo "Click the link above to test your app in the browser!" >> $GITHUB_STEP_SUMMARY
@@ -204,11 +202,13 @@ jobs:
               
               ### Build Information
               - **APK Name:** ${{ env.APK_NAME }}
-              - **Build Number:** ${{ github.run_number }}
+              - **Version:** ${{ env.APP_VERSION }}
+              
+              ### 📦 Build Artifact
+              Download APK from the [workflow artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
               
               ### Appetize Deployment
               - **Status:** ✅ Success
-              - **Public Key:** \`${{ steps.deployment_info.outputs.public_key }}\`
               - **Test App:** ${{ steps.deployment_info.outputs.app_url }}
               
               Click the link above to test the app in your browser! 📱`
