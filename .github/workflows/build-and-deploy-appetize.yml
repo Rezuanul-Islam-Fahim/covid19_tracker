@@ -76,11 +76,12 @@ jobs:
           echo "APK_NAME=covid19_tracker-${VERSION}.apk" >> $GITHUB_ENV
           echo "APK_PATH=build/app/outputs/flutter-apk/covid19_tracker-${VERSION}.apk" >> $GITHUB_ENV
           echo "APP_VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "ARTIFACT_NAME=covid19_tracker-${VERSION}" >> $GITHUB_ENV
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
+          name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.APK_PATH }}
           retention-days: 30
 
@@ -167,7 +168,9 @@ jobs:
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📦 Build Artifact" >> $GITHUB_STEP_SUMMARY
-          echo "Download APK: [covid19_tracker-${{ env.APP_VERSION }}.apk](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+          echo "**Download APK:** [${{ env.APK_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> 💡 **Tip:** Click the artifact name \`${{ env.ARTIFACT_NAME }}\` on the artifacts page to download the APK directly." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Appetize Deployment" >> $GITHUB_STEP_SUMMARY
           echo "- **Status:** ✅ Success" >> $GITHUB_STEP_SUMMARY
@@ -203,9 +206,12 @@ jobs:
               ### Build Information
               - **APK Name:** ${{ env.APK_NAME }}
               - **Version:** ${{ env.APP_VERSION }}
+              - **Artifact Name:** ${{ env.ARTIFACT_NAME }}
               
               ### 📦 Build Artifact
-              Download APK from the [workflow artifacts](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+              Download APK: [${{ env.APK_NAME }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts)
+              
+              > 💡 **Tip:** Click the artifact name \`${{ env.ARTIFACT_NAME }}\` on the artifacts page to download the APK directly.
               
               ### Appetize Deployment
               - **Status:** ✅ Success
