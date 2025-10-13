@@ -9,7 +9,7 @@ Widget loader(BuildContext context) {
         SizedBox(width: 10),
         Text(
           'Loading...',
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.displaySmall,
         ),
       ],
     ),

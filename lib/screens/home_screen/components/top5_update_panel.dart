@@ -110,7 +110,7 @@ class CountryUpdatePanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      shadowColor: Colors.grey[50]!.withOpacity(0.6),
+      shadowColor: Colors.grey[50]!.withValues(alpha: 0.6),
       margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
@@ -124,7 +124,7 @@ class CountryUpdatePanel extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15, left: 15),
               child: Text(
                 title!,
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ),
             const SizedBox(height: 10),
@@ -182,7 +182,7 @@ class CountryPanel extends StatelessWidget {
                 SizedBox(width: 10),
                 Text(
                   covidData.countryName!,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
             ),

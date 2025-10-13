@@ -45,7 +45,7 @@ class CovidDataPanel extends StatelessWidget {
               children: <Widget>[
                 Text(
                   key,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 Text(value.toString()),
               ],
@@ -87,7 +87,7 @@ class CovidDataPanel extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Text(
                     covidData.countryName!,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                 )
               : SizedBox(height: 25),
@@ -104,7 +104,7 @@ class CovidDataPanel extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Covid-19 Details',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   SizedBox(height: 30),
                   buildCovidDataPanel(context),

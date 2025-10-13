@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: SvgPicture.asset(
                 'assets/icons/menu.svg',
                 width: 23,
-                color: Colors.white,
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
               ),
               splashRadius: 22,
               onPressed: () => Scaffold.of(context).openDrawer(),
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: SvgPicture.asset(
               'assets/icons/search.svg',
               width: 21,
-              color: Colors.white,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
             ),
             splashRadius: 22,
             onPressed: () => showSearch(
@@ -213,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 15, 20, 25),
                   decoration: BoxDecoration(
-                    color: kPrimaryColor.withOpacity(0.08),
+                    color: kPrimaryColor.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
